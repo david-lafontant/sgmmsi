@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :timeoutable
 
   enum :role, { user: 0, admin: 1 }.freeze
+  has_many :mmsis
 
   after_initialize :set_default_role, if: :new_record?
 
