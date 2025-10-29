@@ -1,5 +1,5 @@
 class CreateVessels < ActiveRecord::Migration[8.0]
-  def change
+  def up
     create_table :vessels do |t|
       t.string :registration_number
       t.string :operation_area
@@ -13,5 +13,8 @@ class CreateVessels < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
+  end
+  def down
+    drop_table :vessels
   end
 end

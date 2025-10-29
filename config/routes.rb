@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :station_types
   resources :vessels
   devise_for :users
   root "pages#home"

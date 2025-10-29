@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Station types" %>
+
+<h1>Station types</h1>
+
+<div id="station_types">
+  <% @station_types.each do |station_type| %>
+    <%= render station_type %>
+    <p>
+      <%= link_to "Show this station type", station_type %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New station type", new_station_type_path %>

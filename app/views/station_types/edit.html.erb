@@ -1,0 +1,12 @@
+<% content_for :title, "Editing station type" %>
+
+<h1>Editing station type</h1>
+
+<%= render "form", station_type: @station_type %>
+
+<br>
+
+<div>
+  <%= link_to "Show this station type", @station_type %> |
+  <%= link_to "Back to station types", station_types_path %>
+</div>
