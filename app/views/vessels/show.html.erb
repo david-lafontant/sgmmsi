@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @vessel %>
+
+<div>
+  <%= link_to "Edit this vessel", edit_vessel_path(@vessel) %> |
+  <%= link_to "Back to vessels", vessels_path %>
+
+  <%= button_to "Destroy this vessel", @vessel, method: :delete %>
+</div>
