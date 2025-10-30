@@ -23,8 +23,8 @@ class VesselsController < ApplicationController
   def create
     @vessel = Vessel.new(vessel_params)
     @vessel.user_id = current_user.id
-    mmsi = @vessel.generate_mmsi
-    ref1 = Mmsi.create(mmsi_id: mmsi, user_id: current_user.id)
+    mmsi = @vessel.generate_vessel_mmsi
+    ref1 = Mmsi.create(mmsi_id: mmsi, user_id: current_user.id, category: 'vessel')
     @vessel.mmsi_id = ref1.id
     respond_to do |format|
       if @vessel.save
