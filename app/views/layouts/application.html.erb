@@ -19,8 +19,10 @@
   </head>
   <body>
     <%= render "shared/navigation" %>
-    <%= render "shared/flash" %>
-    <%= yield %>
+    <main class="container">
+      <%= render "shared/flash" %>
+      <%= yield %>
+    </main>
     <%= render "shared/footer"%>
   </body>
 </html>
