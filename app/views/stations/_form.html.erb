@@ -1,4 +1,4 @@
-<%= form_with(model: station) do |form| %>
+<%= form_with(model: station, class: "d-flex flex-column p-2 m-2 box-shadow-01") do |form| %>
   <% if station.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(station.errors.count, "error") %> prohibited this station from being saved:</h2>
@@ -9,51 +9,51 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label :registration_number, style: "display: block" %>
-    <%= form.text_field :registration_number %>
+  <div class="input-group mb-3">
+    <%= form.label :registration_number, class: "input-group-text"%>
+    <%= form.text_field :registration_number, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :latitude, style: "display: block" %>
-    <%= form.text_field :latitude %>
+  <div class="input-group mb-3">
+    <%= form.label :latitude, class: "input-group-text"%>
+    <%= form.text_field :latitude, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :longitude, style: "display: block" %>
-    <%= form.text_field :longitude %>
+  <div class="input-group mb-3">
+    <%= form.label :longitude, class: "input-group-text"%>
+    <%= form.text_field :longitude, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :municipality, style: "display: block" %>
-    <%= form.text_field :municipality %>
+  <div class="input-group mb-3">
+    <%= form.label :municipality, class: "input-group-text"%>
+    <%= form.text_field :municipality, class: "form-control" %>
   </div>
   <div class="input-group mb-3">
     <%= form.label :station_type_id, class: "input-group-text" %>
     <%= form.collection_select :station_type_id, StationType.all, :id, :category, prompt: true, class: "form-control"%>
   </div>
-  <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+  <div class="input-group mb-3">
+    <%= form.label :last_name, class: "input-group-text"%>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
+  <div class="input-group mb-3">
+    <%= form.label :first_name, class: "input-group-text"%>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
+  <div class="input-group mb-3">
+    <%= form.label :company_name, class: "input-group-text"%>
+    <%= form.text_field :company_name, class: "form-control" %>
+  </div>
+  <div class="input-group mb-3">
+    <%= form.label :email, class: "input-group-text"%>
+    <%= form.email_field :email , class: "form-control" %>
   </div>
   <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+    <%= form.label :telephone, class: "input-group-text"%>
+    <%= form.telephone_field :telephone, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :company_name, style: "display: block" %>
-    <%= form.text_field :company_name %>
+  <div class="input-group mb-3">
+    <%= form.label :documents, class: "input-group-text"%>
+    <%= form.file_field :documents, multiple: true, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email %>
-  </div>
-  <div>
-    <%= form.label :telephone, style: "display: block" %>
-    <%= form.telephone_field :telephone %>
-  </div>
-  <div>
-    <%= form.label :documents, style: "display: block" %>
-    <%= form.file_field :documents, multiple: true %>
-  </div>
-  <div>
+  <div class="mb-3">
     <%= form.submit %>
   </div>
 <% end %>
