@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @station_type %>
+
+<div>
+  <%= link_to "Edit this station type", edit_station_type_path(@station_type) %> |
+  <%= link_to "Back to station types", station_types_path %>
+
+  <%= button_to "Destroy this station type", @station_type, method: :delete %>
+</div>

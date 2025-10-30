@@ -1,0 +1,69 @@
+<div id="<%= dom_id station %>">
+  <p>
+    <strong>Registration number:</strong>
+    <%= station.registration_number %>
+  </p>
+
+  <p>
+    <strong>Latitude:</strong>
+    <%= station.latitude %>
+  </p>
+
+  <p>
+    <strong>Longitude:</strong>
+    <%= station.longitude %>
+  </p>
+
+  <p>
+    <strong>Municipality:</strong>
+    <%= station.municipality %>
+  </p>
+
+  <p>
+    <strong>Station type:</strong>
+    <%= station.station_type_id %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= station.last_name %>
+  </p>
+
+  <p>
+    <strong>First name:</strong>
+    <%= station.first_name %>
+  </p>
+
+  <p>
+    <strong>Company name:</strong>
+    <%= station.company_name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= station.email %>
+  </p>
+
+  <p>
+    <strong>Telephone:</strong>
+    <%= station.telephone %>
+  </p>
+
+  <p>
+    <strong>Mmsi:</strong>
+    <%= station.mmsi_id %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= station.user_id %>
+  </p>
+
+  <p>
+    <strong>Documents:</strong>
+    <% station.documents.each do |document| %>
+      <div><%= link_to document.filename, document %></div>
+    <% end %>
+  </p>
+
+</div>

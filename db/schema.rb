@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_29_103614) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_30_015434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -52,6 +52,43 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_29_103614) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "mmsis", force: :cascade do |t|
+    t.string "mmsi_id"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category", default: "vessel", null: false
+    t.index ["mmsi_id"], name: "index_mmsis_on_mmsi_id", unique: true
+    t.index ["user_id"], name: "index_mmsis_on_user_id"
+  end
+
+  create_table "station_types", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "registration_number"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.string "municipality"
+    t.bigint "station_type_id", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "company_name"
+    t.string "email"
+    t.string "telephone"
+    t.bigint "mmsi_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mmsi_id"], name: "index_stations_on_mmsi_id"
+    t.index ["registration_number"], name: "index_stations_on_registration_number", unique: true
+    t.index ["station_type_id"], name: "index_stations_on_station_type_id"
+    t.index ["user_id"], name: "index_stations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -80,6 +117,29 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_29_103614) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vessels", force: :cascade do |t|
+    t.string "registration_number"
+    t.string "operation_area"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "company_name"
+    t.string "email"
+    t.string "telephone"
+    t.bigint "mmsi_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mmsi_id"], name: "index_vessels_on_mmsi_id"
+    t.index ["registration_number"], name: "index_vessels_on_registration_number", unique: true
+    t.index ["user_id"], name: "index_vessels_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "mmsis", "users"
+  add_foreign_key "stations", "mmsis"
+  add_foreign_key "stations", "station_types"
+  add_foreign_key "stations", "users"
+  add_foreign_key "vessels", "mmsis"
+  add_foreign_key "vessels", "users"
 end
