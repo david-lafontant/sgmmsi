@@ -3,4 +3,32 @@ class Station < ApplicationRecord
   belongs_to :mmsi
   belongs_to :user
   has_many_attached :documents
+
+  validates :registration_number,
+            :latitude,
+            :longitude,
+            :municipality,
+            :last_name,
+            :first_name,
+            :company_name,
+            :email,
+            :telephone, presence: true
+  def generate_station_mmsi(id)
+    mmsi = nil
+    case id
+    when 1
+      mmsi = "003291#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+    when 2
+      mmsi = "003292#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+    when 3
+      mmsi = "003293#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+    when 4
+      mmsi = "003294#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+    when 5
+      mmsi = "003295#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+    else
+      raise StandardError, 'Error.'
+    end
+    mmsi
+  end
 end
