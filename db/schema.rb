@@ -55,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_30_000037) do
   create_table "mmsis", force: :cascade do |t|
     t.string "mmsi_id"
     t.bigint "user_id", null: false
+    t.string "category", default: "vessel", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_mmsis_on_user_id"

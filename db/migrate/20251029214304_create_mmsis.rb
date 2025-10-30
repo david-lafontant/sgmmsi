@@ -3,6 +3,7 @@ class CreateMmsis < ActiveRecord::Migration[8.0]
     create_table :mmsis do |t|
       t.string :mmsi_id
       t.references :user, null: false, foreign_key: true
+      t.string :category, null: false, default: "vessel"
 
       t.timestamps
     end
