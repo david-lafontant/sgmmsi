@@ -10,7 +10,7 @@ class Vessel < ApplicationRecord
             :telephone, presence: true
   has_many_attached :documents
 
-  def generate_mmsi
+  def generate_vessel_mmsi
     "003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
   end
 end
