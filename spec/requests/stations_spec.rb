@@ -12,69 +12,68 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/stations", type: :request do
-  
+RSpec.describe '/stations', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Station. As you add validations to Station, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Station.create! valid_attributes
       get stations_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       station = Station.create! valid_attributes
       get station_url(station)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_station_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       station = Station.create! valid_attributes
       get edit_station_url(station)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Station" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Station' do
+        expect do
           post stations_url, params: { station: valid_attributes }
-        }.to change(Station, :count).by(1)
+        end.to change(Station, :count).by(1)
       end
 
-      it "redirects to the created station" do
+      it 'redirects to the created station' do
         post stations_url, params: { station: valid_attributes }
         expect(response).to redirect_to(station_url(Station.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Station" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Station' do
+        expect do
           post stations_url, params: { station: invalid_attributes }
-        }.to change(Station, :count).by(0)
+        end.to change(Station, :count).by(0)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
@@ -84,20 +83,20 @@ RSpec.describe "/stations", type: :request do
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
+      end
 
-      it "updates the requested station" do
+      it 'updates the requested station' do
         station = Station.create! valid_attributes
         patch station_url(station), params: { station: new_attributes }
         station.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "redirects to the station" do
+      it 'redirects to the station' do
         station = Station.create! valid_attributes
         patch station_url(station), params: { station: new_attributes }
         station.reload
@@ -105,7 +104,7 @@ RSpec.describe "/stations", type: :request do
       end
     end
 
-    context "with invalid parameters" do
+    context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         station = Station.create! valid_attributes
         patch station_url(station), params: { station: invalid_attributes }
@@ -114,15 +113,15 @@ RSpec.describe "/stations", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested station" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested station' do
       station = Station.create! valid_attributes
-      expect {
+      expect do
         delete station_url(station)
-      }.to change(Station, :count).by(-1)
+      end.to change(Station, :count).by(-1)
     end
 
-    it "redirects to the stations list" do
+    it 'redirects to the stations list' do
       station = Station.create! valid_attributes
       delete station_url(station)
       expect(response).to redirect_to(stations_url)

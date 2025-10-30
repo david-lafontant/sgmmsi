@@ -7,8 +7,7 @@ class StationsController < ApplicationController
   end
 
   # GET /stations/1 or /stations/1.json
-  def show
-  end
+  def show; end
 
   # GET /stations/new
   def new
@@ -16,8 +15,7 @@ class StationsController < ApplicationController
   end
 
   # GET /stations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /stations or /stations.json
   def create

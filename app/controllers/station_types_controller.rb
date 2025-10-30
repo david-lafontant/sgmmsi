@@ -1,5 +1,5 @@
 class StationTypesController < ApplicationController
-  before_action :set_station_type, only: %i[ show edit update destroy ]
+  before_action :set_station_type, only: %i[show edit update destroy]
 
   # GET /station_types or /station_types.json
   def index
@@ -7,8 +7,7 @@ class StationTypesController < ApplicationController
   end
 
   # GET /station_types/1 or /station_types/1.json
-  def show
-  end
+  def show; end
 
   # GET /station_types/new
   def new
@@ -16,8 +15,7 @@ class StationTypesController < ApplicationController
   end
 
   # GET /station_types/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /station_types or /station_types.json
   def create
@@ -25,7 +23,7 @@ class StationTypesController < ApplicationController
 
     respond_to do |format|
       if @station_type.save
-        format.html { redirect_to @station_type, notice: "Station type was successfully created." }
+        format.html { redirect_to @station_type, notice: 'Station type was successfully created.' }
         format.json { render :show, status: :created, location: @station_type }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class StationTypesController < ApplicationController
   def update
     respond_to do |format|
       if @station_type.update(station_type_params)
-        format.html { redirect_to @station_type, notice: "Station type was successfully updated.", status: :see_other }
+        format.html { redirect_to @station_type, notice: 'Station type was successfully updated.', status: :see_other }
         format.json { render :show, status: :ok, location: @station_type }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class StationTypesController < ApplicationController
     @station_type.destroy!
 
     respond_to do |format|
-      format.html { redirect_to station_types_path, notice: "Station type was successfully destroyed.", status: :see_other }
+      format.html { redirect_to station_types_path, notice: 'Station type was successfully destroyed.', status: :see_other }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_station_type
-      @station_type = StationType.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def station_type_params
-      params.expect(station_type: [ :category ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_station_type
+    @station_type = StationType.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def station_type_params
+    params.expect(station_type: [:category])
+  end
 end

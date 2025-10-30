@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :station_type do
-    category { "MyString" }
+    category { 'MyString' }
   end
 end

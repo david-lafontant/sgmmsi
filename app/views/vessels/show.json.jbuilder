@@ -1,1 +1,1 @@
-json.partial! "vessels/vessel", vessel: @vessel
+json.partial! 'vessels/vessel', vessel: @vessel

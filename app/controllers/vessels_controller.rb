@@ -7,8 +7,7 @@ class VesselsController < ApplicationController
   end
 
   # GET /vessels/1 or /vessels/1.json
-  def show
-  end
+  def show; end
 
   # GET /vessels/new
   def new
@@ -16,8 +15,7 @@ class VesselsController < ApplicationController
   end
 
   # GET /vessels/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /vessels or /vessels.json
   def create

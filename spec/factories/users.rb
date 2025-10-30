@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :user do
+  factory :user do # rubocop:disable Lint/EmptyBlock
   end
 end
