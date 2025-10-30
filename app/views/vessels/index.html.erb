@@ -1,16 +1,16 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Vessels" %>
-
-<h1>Vessels</h1>
-
-<div id="vessels">
-  <% @vessels.each do |vessel| %>
-    <%= render vessel %>
-    <p>
-      <%= link_to "Show this vessel", vessel %>
-    </p>
-  <% end %>
+<div class="row">
+  <div class="col col-md-8 d-flex flex-column mx-auto py-3">
+    <h1>Vessels</h1>
+    <div id="vessels">
+      <% @vessels.each do |vessel| %>
+        <%= render vessel %>
+        <p>
+          <%= link_to "Show this vessel", vessel %>
+        </p>
+      <% end %>
+    </div>
+    <%= link_to "New vessel", new_vessel_path %>
+  </div>
 </div>
-
-<%= link_to "New vessel", new_vessel_path %>

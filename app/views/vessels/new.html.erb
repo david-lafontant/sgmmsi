@@ -1,11 +1,10 @@
 <% content_for :title, "New vessel" %>
-
-<h1>New vessel</h1>
-
-<%= render "form", vessel: @vessel %>
-
-<br>
-
-<div>
-  <%= link_to "Back to vessels", vessels_path %>
+<div class="row">
+  <div class="col d-flex flex-column p-2">
+    <h1>New vessel</h1>
+    <%= render "form", vessel: @vessel %>
+    <div>
+      <%= link_to "Back to vessels", vessels_path %>
+    </div>
+  </div>
 </div>
