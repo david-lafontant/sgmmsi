@@ -1,4 +1,4 @@
-<%= form_with(model: station_type, class: "d-flex flex-column p-2 m-2") do |form| %>
+<%= form_with(model: station_type, class: "d-flex flex-column p-2 m-2 box-shadow-01") do |form| %>
   <% if station_type.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(station_type.errors.count, "error") %> prohibited this station_type from being saved:</h2>
