@@ -5,14 +5,17 @@
       <p style="color: green"><%= notice %></p>
     <%end%>
     <h1>Station types</h1>
-    <div id="station_types" class= "border border-dark border-rounded">
+    <%= link_to "New station type", new_station_type_path, class: "btn btn-primary mb-3" %>
+    <div id="station_types">
       <% @station_types.each do |station_type| %>
-        <%= render station_type %>
-        <p>
-          <%= link_to "Show this station type", station_type, class: "btn btn-success" %>
-        </p>
+        <div class="box-shadow-02 mb-3 p-2">
+          <%= render station_type %>
+          <p>
+            <%= link_to "Show this station type", station_type, class: "btn btn-success" %>
+          </p>
+        </div>
       <% end %>
     </div>
-    <%= link_to "New station type", new_station_type_path %>
+    <%= link_to "New station type", new_station_type_path, class: "btn btn-primary" %>
   </div>
 </div>
