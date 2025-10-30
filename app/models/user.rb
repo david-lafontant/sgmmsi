@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum :role, { user: 0, admin: 1 }.freeze
   has_many :mmsis
   has_many :vessels
+  has_many :stations
 
   after_initialize :set_default_role, if: :new_record?
 
