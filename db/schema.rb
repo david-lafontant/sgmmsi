@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_30_000037) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_30_015434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -55,9 +55,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_30_000037) do
   create_table "mmsis", force: :cascade do |t|
     t.string "mmsi_id"
     t.bigint "user_id", null: false
-    t.string "category", default: "vessel", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category", default: "vessel", null: false
+    t.index ["mmsi_id"], name: "index_mmsis_on_mmsi_id", unique: true
     t.index ["user_id"], name: "index_mmsis_on_user_id"
   end
 
@@ -83,6 +84,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_30_000037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mmsi_id"], name: "index_stations_on_mmsi_id"
+    t.index ["registration_number"], name: "index_stations_on_registration_number", unique: true
     t.index ["station_type_id"], name: "index_stations_on_station_type_id"
     t.index ["user_id"], name: "index_stations_on_user_id"
   end
@@ -128,6 +130,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_30_000037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mmsi_id"], name: "index_vessels_on_mmsi_id"
+    t.index ["registration_number"], name: "index_vessels_on_registration_number", unique: true
     t.index ["user_id"], name: "index_vessels_on_user_id"
   end
 
