@@ -1,69 +1,56 @@
-<div id="<%= dom_id station %>">
-  <p>
+<div class="card-body" id="<%= dom_id station %>">
+  <p class="card-text">
     <strong>Registration number:</strong>
     <%= station.registration_number %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Latitude:</strong>
     <%= station.latitude %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Longitude:</strong>
     <%= station.longitude %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Municipality:</strong>
     <%= station.municipality %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Station type:</strong>
     <%= station.station_type_id %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Last name:</strong>
     <%= station.last_name %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>First name:</strong>
     <%= station.first_name %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Company name:</strong>
     <%= station.company_name %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Email:</strong>
     <%= station.email %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Telephone:</strong>
     <%= station.telephone %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Mmsi:</strong>
     <%= station.mmsi_id %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>User:</strong>
     <%= station.user_id %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Documents:</strong>
     <% station.documents.each do |document| %>
-      <div><%= link_to document.filename, document %></div>
+      <div><%= link_to document.filename, document , class: "btn btn-success" %></div>
     <% end %>
   </p>
-
 </div>
