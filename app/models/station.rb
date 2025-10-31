@@ -31,4 +31,12 @@ class Station < ApplicationRecord
     end
     mmsi
   end
+
+  def display_mmsi(id)
+    Mmsi.find(id).mmsi_id
+  end
+
+  def display_station_type(id)
+    StationType.find(id).category
+  end
 end
