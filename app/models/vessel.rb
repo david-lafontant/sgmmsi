@@ -13,4 +13,8 @@ class Vessel < ApplicationRecord
   def generate_vessel_mmsi
     "003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
   end
+
+  def display_mmsi(id)
+    Mmsi.find(id).mmsi_id
+  end
 end
