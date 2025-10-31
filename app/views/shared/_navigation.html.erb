@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-space-cadet" aria-label="Main navigation" data-controller="offcanvas">
+  <div class="container-fluid">
+    <%= link_to "MMSI REGISTRATION SYSTEM", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse offcanvas-collapse bg-space-cadet text-white" id="navbarsExampleDefault">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Accueil", root_path, class: "nav-link active", aria: {current: "page"}  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Navires", vessels_path, class: "nav-link text-white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Stations", stations_path, class: "nav-link text-white"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Types de Station", station_types_path, class: "nav-link text-white"  %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

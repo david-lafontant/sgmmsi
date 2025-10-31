@@ -1,10 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @station_type %>
-
-<div>
-  <%= link_to "Edit this station type", edit_station_type_path(@station_type) %> |
-  <%= link_to "Back to station types", station_types_path %>
-
-  <%= button_to "Destroy this station type", @station_type, method: :delete %>
+<div class="row">
+  <div class="col col-md-8 d-flex flex-column mx-auto py-3">
+    <% if !notice.blank? %>
+      <p style="color: green"><%= notice %></p>
+    <%end%>
+    <%= render @station_type %>
+    <div>
+      <%= link_to "Edit this station type", edit_station_type_path(@station_type), class: "btn btn-warning" %> |
+      <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
+      <%= button_to "Destroy this station type", @station_type, method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
 </div>

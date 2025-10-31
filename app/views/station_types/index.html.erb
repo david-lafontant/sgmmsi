@@ -1,16 +1,21 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Station types" %>
-
-<h1>Station types</h1>
-
-<div id="station_types">
-  <% @station_types.each do |station_type| %>
-    <%= render station_type %>
-    <p>
-      <%= link_to "Show this station type", station_type %>
-    </p>
-  <% end %>
+<div class="row">
+  <div class="col col-md-8 d-flex flex-column mx-auto py-3">
+    <% if !notice.blank? %>
+      <p style="color: green"><%= notice %></p>
+    <%end%>
+    <h1>Station types</h1>
+    <%= link_to "New station type", new_station_type_path, class: "btn btn-primary mb-3" %>
+    <div id="station_types">
+      <% @station_types.each do |station_type| %>
+        <div class="box-shadow-02 mb-3 p-2">
+          <%= render station_type %>
+          <p>
+            <%= link_to "Show this station type", station_type, class: "btn btn-success" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to "New station type", new_station_type_path, class: "btn btn-primary" %>
+  </div>
 </div>
-
-<%= link_to "New station type", new_station_type_path %>

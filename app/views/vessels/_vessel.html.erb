@@ -1,54 +1,44 @@
-<div id="<%= dom_id vessel %>">
-  <p>
+<div class="card-body" id="<%= dom_id vessel %>">
+  <p class="card-text">
     <strong>Registration number:</strong>
     <%= vessel.registration_number %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Operation area:</strong>
     <%= vessel.operation_area %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Last name:</strong>
     <%= vessel.last_name %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>First name:</strong>
     <%= vessel.first_name %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Company name:</strong>
     <%= vessel.company_name %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Email:</strong>
     <%= vessel.email %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Telephone:</strong>
     <%= vessel.telephone %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Mmsi:</strong>
     <%= vessel.mmsi_id %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>User:</strong>
     <%= vessel.user_id %>
   </p>
-
-  <p>
+  <p class="card-text">
     <strong>Documents:</strong>
     <% vessel.documents.each do |document| %>
-      <div><%= link_to document.filename, document %></div>
+      <div><%= link_to document.filename, document, target: :blank, class: "btn btn-success" %></div>
     <% end %>
   </p>
-
 </div>

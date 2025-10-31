@@ -1,8 +1,7 @@
-<%= form_with(model: station_type) do |form| %>
+<%= form_with(model: station_type, class: "d-flex flex-column p-2 m-2 box-shadow-01") do |form| %>
   <% if station_type.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(station_type.errors.count, "error") %> prohibited this station_type from being saved:</h2>
-
       <ul>
         <% station_type.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,13 +9,11 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
+  <div class="input-group mb-3">
+    <%= form.label :category, class: "input-group-text" %>
+    <%= form.text_field :category, class: "form-control" %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit "Soumettre", class: "btn btn-success" %>
   </div>
 <% end %>

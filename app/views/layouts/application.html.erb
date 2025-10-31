@@ -18,7 +18,11 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= render "shared/flash" %>
-    <%= yield %>
+    <%= render "shared/navigation" %>
+    <main class="container">
+      <%= render "shared/flash" %>
+      <%= yield %>
+    </main>
+    <%= render "shared/footer"%>
   </body>
 </html>

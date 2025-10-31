@@ -1,16 +1,38 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Stations" %>
-
-<h1>Stations</h1>
-
-<div id="stations">
-  <% @stations.each do |station| %>
-    <%= render station %>
-    <p>
-      <%= link_to "Show this station", station %>
-    </p>
-  <% end %>
+<div class="row">
+  <div class="col d-flex flex-column mx-auto py-3">
+    <h1>Stations</h1>
+    <div id="stations">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Registration Number</th>
+            <th scope="col">Type</th>
+            <th scope="col">MMSI</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stations.each do |station| %>
+            <tr>
+              <td>
+                <%= station.registration_number%>
+              </td>
+              <td>
+                <%= station.display_station_type(station.station_type_id)%>
+              </td>
+              <td>
+                <%= station.display_mmsi(station.mmsi_id)%>
+              </td>
+              <td>
+                <%= link_to "Details", station %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to "New station", new_station_path, class: "btn btn-primary" %>
+  </div>
 </div>
-
-<%= link_to "New station", new_station_path %>

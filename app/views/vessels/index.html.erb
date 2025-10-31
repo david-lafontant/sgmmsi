@@ -1,16 +1,43 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Vessels" %>
-
-<h1>Vessels</h1>
-
-<div id="vessels">
-  <% @vessels.each do |vessel| %>
-    <%= render vessel %>
-    <p>
-      <%= link_to "Show this vessel", vessel %>
-    </p>
-  <% end %>
+<div class="row">
+  <div class="col col-md-8 d-flex flex-column mx-auto py-3">
+    <h1>Vessels</h1>
+    <div>
+      <%= link_to "New vessel", new_vessel_path, class: "btn btn-primary" %>
+    </div>
+    <div id="vessels">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Registration Number</th>
+            <th scope="col">Type</th>
+            <th scope="col">MMSI</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vessels.each do |vessel| %>
+            <tr>
+              <td>
+                <%= vessel.registration_number %>
+              </td>
+              <td>
+                <%= vessel.operation_area %>
+              </td>
+              <td>
+                <%= vessel.display_mmsi(vessel.mmsi_id)%>
+              </td>
+              <td>
+                <%= link_to "Details", vessel %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <%= link_to "New vessel", new_vessel_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New vessel", new_vessel_path %>
