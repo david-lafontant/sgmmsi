@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_31_160959) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_02_040014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,6 +50,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_31_160959) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "callsigns", force: :cascade do |t|
+    t.string "call_sign_num", null: false
+    t.bigint "mmsi_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mmsi_id"], name: "index_callsigns_on_mmsi_id"
+    t.index ["user_id"], name: "index_callsigns_on_user_id"
   end
 
   create_table "mmsis", force: :cascade do |t|
@@ -137,6 +148,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_31_160959) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "callsigns", "mmsis"
+  add_foreign_key "callsigns", "users"
   add_foreign_key "mmsis", "users"
   add_foreign_key "stations", "mmsis"
   add_foreign_key "stations", "station_types"

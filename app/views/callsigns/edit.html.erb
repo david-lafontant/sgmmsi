@@ -1,0 +1,12 @@
+<% content_for :title, "Editing callsign" %>
+
+<h1>Editing callsign</h1>
+
+<%= render "form", callsign: @callsign %>
+
+<br>
+
+<div>
+  <%= link_to "Show this callsign", @callsign %> |
+  <%= link_to "Back to callsigns", callsigns_path %>
+</div>

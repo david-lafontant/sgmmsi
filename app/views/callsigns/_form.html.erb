@@ -1,0 +1,42 @@
+<%= form_with(model: callsign) do |form| %>
+  <% if callsign.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(callsign.errors.count, "error") %> prohibited this callsign from being saved:</h2>
+
+      <ul>
+        <% callsign.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :call_sign_num, style: "display: block" %>
+    <%= form.text_field :call_sign_num %>
+  </div>
+
+  <div>
+    <%= form.label :mmsi_id, style: "display: block" %>
+    <%= form.text_field :mmsi_id %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.checkbox :status %>
+  </div>
+
+  <div>
+    <%= form.label :documents, style: "display: block" %>
+    <%= form.file_field :documents, multiple: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

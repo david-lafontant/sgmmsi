@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :callsigns
   resources :stations
   resources :station_types
   resources :vessels
