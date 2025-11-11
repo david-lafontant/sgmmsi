@@ -5,6 +5,14 @@ class Callsign < ApplicationRecord
 
   after_initialize :set_default_status, if: :new_record?
 
+  def display_mmsi(id)
+    Mmsi.find(id).mmsi_id
+  end
+
+  def display_user(id)
+    User.find(id).email
+  end
+
   private
 
   def set_default_status
