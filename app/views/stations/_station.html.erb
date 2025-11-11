@@ -1,56 +1,118 @@
-<div class="card-body" id="<%= dom_id station %>">
-  <p class="card-text">
-    <strong>Registration number:</strong>
-    <%= station.registration_number %>
-  </p>
-  <p class="card-text">
-    <strong>Latitude:</strong>
-    <%= station.latitude %>
-  </p>
-  <p class="card-text">
-    <strong>Longitude:</strong>
-    <%= station.longitude %>
-  </p>
-  <p class="card-text">
-    <strong>Municipality:</strong>
-    <%= station.municipality %>
-  </p>
-  <p class="card-text">
-    <strong>Station type:</strong>
-    <%= station.station_type_id %>
-  </p>
-  <p class="card-text">
-    <strong>Last name:</strong>
-    <%= station.last_name %>
-  </p>
-  <p class="card-text">
-    <strong>First name:</strong>
-    <%= station.first_name %>
-  </p>
-  <p class="card-text">
-    <strong>Company name:</strong>
-    <%= station.company_name %>
-  </p>
-  <p class="card-text">
-    <strong>Email:</strong>
-    <%= station.email %>
-  </p>
-  <p class="card-text">
-    <strong>Telephone:</strong>
-    <%= station.telephone %>
-  </p>
-  <p class="card-text">
-    <strong>Mmsi:</strong>
-    <%= station.mmsi_id %>
-  </p>
-  <p class="card-text">
-    <strong>User:</strong>
-    <%= station.user_id %>
-  </p>
-  <p class="card-text">
-    <strong>Documents:</strong>
-    <% station.documents.each do |document| %>
-      <div><%= link_to document.filename, document , target: :blank, class: "btn btn-success" %></div>
-    <% end %>
-  </p>
-</div>
+<%if station.mmsi.status%>
+  <div class="card-body bd-light" id="<%= dom_id station %>">
+    <p class="card-text">
+      <strong>Registration number:</strong>
+      <%= station.registration_number %>
+    </p>
+    <p class="card-text">
+      <strong>Latitude:</strong>
+      <%= station.latitude %>
+    </p>
+    <p class="card-text">
+      <strong>Longitude:</strong>
+      <%= station.longitude %>
+    </p>
+    <p class="card-text">
+      <strong>Municipality:</strong>
+      <%= station.municipality %>
+    </p>
+    <p class="card-text">
+      <strong>Station type:</strong>
+      <%= station.station_type_id %>
+    </p>
+    <p class="card-text">
+      <strong>Last name:</strong>
+      <%= station.last_name %>
+    </p>
+    <p class="card-text">
+      <strong>First name:</strong>
+      <%= station.first_name %>
+    </p>
+    <p class="card-text">
+      <strong>Company name:</strong>
+      <%= station.company_name %>
+    </p>
+    <p class="card-text">
+      <strong>Email:</strong>
+      <%= station.email %>
+    </p>
+    <p class="card-text">
+      <strong>Telephone:</strong>
+      <%= station.telephone %>
+    </p>
+    <p class="card-text">
+      <strong>Mmsi:</strong>
+      <%= station.mmsi.mmsi_id %>
+    </p>
+    <p class="card-text">
+      <strong>User:</strong>
+      <%= station.user.email %>
+    </p>
+    <p class="card-text">
+      <strong>Documents:</strong>
+      <% station.documents.each do |document| %>
+        <div><%= link_to document.filename, document , target: :blank, class: "btn btn-success" %></div>
+      <% end %>
+    </p>
+  </div>
+<%else%>
+  <div class="card-body border border-danger border-4" id="<%= dom_id station %>">
+    <p class="card-text">
+      <%= link_to "Approve MMSI", edit_mmsi_url(station.mmsi.id), class: "btn btn-warning" %>
+    </p>
+    <p class="card-text">
+      <strong>Registration number:</strong>
+      <%= station.registration_number %>
+    </p>
+    <p class="card-text">
+      <strong>Latitude:</strong>
+      <%= station.latitude %>
+    </p>
+    <p class="card-text">
+      <strong>Longitude:</strong>
+      <%= station.longitude %>
+    </p>
+    <p class="card-text">
+      <strong>Municipality:</strong>
+      <%= station.municipality %>
+    </p>
+    <p class="card-text">
+      <strong>Station type:</strong>
+      <%= station.station_type_id %>
+    </p>
+    <p class="card-text">
+      <strong>Last name:</strong>
+      <%= station.last_name %>
+    </p>
+    <p class="card-text">
+      <strong>First name:</strong>
+      <%= station.first_name %>
+    </p>
+    <p class="card-text">
+      <strong>Company name:</strong>
+      <%= station.company_name %>
+    </p>
+    <p class="card-text">
+      <strong>Email:</strong>
+      <%= station.email %>
+    </p>
+    <p class="card-text">
+      <strong>Telephone:</strong>
+      <%= station.telephone %>
+    </p>
+    <p class="card-text">
+      <strong>Mmsi:</strong>
+      <%= station.mmsi.mmsi_id %>
+    </p>
+    <p class="card-text">
+      <strong>User:</strong>
+      <%= station.user.email %>
+    </p>
+    <p class="card-text">
+      <strong>Documents:</strong>
+      <% station.documents.each do |document| %>
+        <div><%= link_to document.filename, document , target: :blank, class: "btn btn-success" %></div>
+      <% end %>
+    </p>
+  </div>
+<%end%>
