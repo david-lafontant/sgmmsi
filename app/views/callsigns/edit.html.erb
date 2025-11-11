@@ -1,11 +1,36 @@
 <% content_for :title, "Editing callsign" %>
-
 <h1>Editing callsign</h1>
-
-<%= render "form", callsign: @callsign %>
-
+<%= form_with(model: @callsign) do |form| %>
+  <% if @callsign.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@callsign.errors.count, "error") %> prohibited this callsign from being saved:</h2>
+      <ul>
+        <% @callsign.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <div class="mb-3">
+      <fieldset>
+        <legend>Update callsign Status</legend>
+        <div class="form-check">
+          <%= form.label :status, value: "Valider", class: "form-check-label"  %>
+          <%= form.radio_button :status, true, class: "form-check-inpu" %>
+        </div>
+        <div class="form-check">
+          <%= form.label :status, value: "Invalider", class: "form-check-label"%>
+          <%= form.radio_button :status, false, class: "form-check-inpu"%>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
 <br>
-
 <div>
   <%= link_to "Show this callsign", @callsign %> |
   <%= link_to "Back to callsigns", callsigns_path %>
