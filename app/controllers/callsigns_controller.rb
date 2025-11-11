@@ -1,5 +1,5 @@
 class CallsignsController < ApplicationController
-  before_action :set_callsign, only: %i[show edit update destroy]
+  before_action :set_callsign, only: %i[show destroy]
 
   # GET /callsigns or /callsigns.json
   def index
@@ -17,6 +17,7 @@ class CallsignsController < ApplicationController
 
   # GET /callsigns/1/edit
   def edit
+    @callsign = Callsign.find(params.expect(:id))
   end
 
   # POST /callsigns or /callsigns.json
@@ -37,8 +38,10 @@ class CallsignsController < ApplicationController
 
   # PATCH/PUT /callsigns/1 or /callsigns/1.json
   def update
+    @callsign = Callsign.find(params.expect(:id))
+
     respond_to do |format|
-      if @callsign.update(callsign_params)
+      if @callsign.update(params.expect(callsign: [:status]))
         format.html { redirect_to @callsign, notice: 'Callsign was successfully updated.', status: :see_other }
         format.json { render :show, status: :ok, location: @callsign }
       else
