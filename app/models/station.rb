@@ -39,4 +39,8 @@ class Station < ApplicationRecord
   def display_station_type(id)
     StationType.find(id).category
   end
+
+  def generate_callsign
+    "call003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+  end
 end
