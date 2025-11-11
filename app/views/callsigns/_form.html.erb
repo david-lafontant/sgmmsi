@@ -2,7 +2,6 @@
   <% if callsign.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(callsign.errors.count, "error") %> prohibited this callsign from being saved:</h2>
-
       <ul>
         <% callsign.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,33 +9,15 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :call_sign_num, style: "display: block" %>
-    <%= form.text_field :call_sign_num %>
+  <div class="input-group mb-3">
+    <%= form.label :mmsi_id, class: "input-group-text" %>
+    <%= form.collection_select :mmsi_id, Mmsi.all, :id, :mmsi_id, prompt: true, class: "form-control"%>
   </div>
-
-  <div>
-    <%= form.label :mmsi_id, style: "display: block" %>
-    <%= form.text_field :mmsi_id %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.checkbox :status %>
-  </div>
-
-  <div>
+  <div class="mb-3">
     <%= form.label :documents, style: "display: block" %>
     <%= form.file_field :documents, multiple: true %>
   </div>
-
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success" %>
   </div>
 <% end %>
