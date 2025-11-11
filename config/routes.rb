@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :callsigns
   resources :stations
   resources :station_types
   resources :vessels
+  resources :mmsis, only: [:edit, :update, :destroy]
+  get '/dashboard', to: "mmsis#dashboard", as: :dashboard
   devise_for :users
   root "pages#home"
 

@@ -23,12 +23,15 @@ class VesselsController < ApplicationController
     @vessel.user_id = current_user.id
     mmsi = @vessel.generate_vessel_mmsi
     ref1 = Mmsi.create(mmsi_id: mmsi, user_id: current_user.id, category: 'vessel')
+    call1 = Callsign.create(mmsi_id: ref1.id, user_id: current_user.id, call_sign_num: @vessel.generate_callsign, status: false)
     @vessel.mmsi_id = ref1.id
     respond_to do |format|
       if @vessel.save
         format.html { redirect_to @vessel, notice: 'Vessel was successfully created.' }
         format.json { render :show, status: :created, location: @vessel }
       else
+        ref1.destroy
+        call1.destroy
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @vessel.errors, status: :unprocessable_entity }
       end

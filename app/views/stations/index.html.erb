@@ -10,6 +10,7 @@
             <th scope="col">Registration Number</th>
             <th scope="col">Type</th>
             <th scope="col">MMSI</th>
+            <th scope="col">MMSI Status</th>
             <th scope="col">Details</th>
           </tr>
         </thead>
@@ -24,6 +25,13 @@
               </td>
               <td>
                 <%= station.display_mmsi(station.mmsi_id)%>
+              </td>
+              <td>
+                <% if station.mmsi.status%>
+                  <p>Approuv&eacute</p>
+                <%else%>
+                  <p>Non Approuv&eacute</p>
+                <%end%>
               </td>
               <td>
                 <%= link_to "Details", station %>

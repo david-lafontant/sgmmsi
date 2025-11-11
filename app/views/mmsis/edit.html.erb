@@ -1,0 +1,11 @@
+<% content_for :title, "Update mmsi" %>
+<div class="row">
+  <div class="col d-flex flex-column p-2">
+    <h1>Validate mmsi</h1>
+    <%= render "form", mmsi: @mmsi %>
+    <div>
+      <%= link_to "Back to Dashboard", stations_path, class: "btn btn-primary" %>
+      <%= button_to "Destroy this mmsi", @mmsi, method: :delete, class: "btn btn-danger m-2" %>
+    </div>
+  </div>
+</div>

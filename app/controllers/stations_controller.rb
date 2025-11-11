@@ -18,11 +18,12 @@ class StationsController < ApplicationController
   def edit; end
 
   # POST /stations or /stations.json
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     @station = Station.new(station_params)
     @station.user_id = current_user.id
     mmsi = @station.generate_station_mmsi(@station.station_type_id)
     ref1 = Mmsi.create(mmsi_id: mmsi, user_id: current_user.id, category: 'station')
+    call1 = Callsign.create(mmsi_id: ref1.id, user_id: current_user.id, call_sign_num: @station.generate_callsign, status: false)
     @station.mmsi_id = ref1.id
 
     respond_to do |format|
@@ -30,6 +31,8 @@ class StationsController < ApplicationController
         format.html { redirect_to @station, notice: 'Station was successfully created.' }
         format.json { render :show, status: :created, location: @station }
       else
+        ref1.destroy
+        call1.destroy
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @station.errors, status: :unprocessable_entity }
       end

@@ -19,6 +19,9 @@
           <%= link_to "Types de Station", station_types_path, class: "nav-link text-white"  %>
         </li>
         <li class="nav-item">
+          <%= link_to "Call signs", callsigns_path, class: "nav-link text-white"  %>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">Help</a>
         </li>
         <li class="nav-item dropdown">
@@ -34,6 +37,11 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+      <div>
+        <% if user_signed_in? %>
+          <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+        <%end %>
+      </div>
     </div>
   </div>
 </nav>

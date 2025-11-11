@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :mmsis
   has_many :vessels
   has_many :stations
+  has_many :callsigns
 
   after_initialize :set_default_role, if: :new_record?
 
