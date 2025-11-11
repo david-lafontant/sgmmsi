@@ -13,13 +13,13 @@ class Callsign < ApplicationRecord
     User.find(id).email
   end
 
+  def generate_callsign
+    "call003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+  end
+
   private
 
   def set_default_status
     self[:status] ||= false
-  end
-
-  def generate_callsign
-    "call003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
   end
 end
