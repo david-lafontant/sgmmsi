@@ -1,1 +1,1 @@
-json.array! @callsigns, partial: "callsigns/callsign", as: :callsign
+json.array! @callsigns, partial: 'callsigns/callsign', as: :callsign

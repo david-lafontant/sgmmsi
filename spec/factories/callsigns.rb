@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :callsign do
-    call_sign_num { "MyString" }
+    call_sign_num { 'MyString' }
     mmsi { nil }
     user { nil }
     status { false }

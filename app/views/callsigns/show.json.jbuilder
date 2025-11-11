@@ -1,1 +1,1 @@
-json.partial! "callsigns/callsign", callsign: @callsign
+json.partial! 'callsigns/callsign', callsign: @callsign

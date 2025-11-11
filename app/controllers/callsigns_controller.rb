@@ -7,8 +7,7 @@ class CallsignsController < ApplicationController
   end
 
   # GET /callsigns/1 or /callsigns/1.json
-  def show
-  end
+  def show; end
 
   # GET /callsigns/new
   def new

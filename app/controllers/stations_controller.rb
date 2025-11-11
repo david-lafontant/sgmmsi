@@ -18,7 +18,7 @@ class StationsController < ApplicationController
   def edit; end
 
   # POST /stations or /stations.json
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     @station = Station.new(station_params)
     @station.user_id = current_user.id
     mmsi = @station.generate_station_mmsi(@station.station_type_id)
