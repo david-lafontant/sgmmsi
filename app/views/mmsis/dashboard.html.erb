@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col">
+    <h1>
+      Dasboard
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <p>
+          <span>Number of mmsi assigned to stations:</span>&nbsp;<span class="badge bg-warning"><%= @stations  %></span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <p>
+          <span>Number of mmsi assigned to vessels:</span>&nbsp;<span class="badge bg-warning"><%= @vessels  %></span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <p>
+          Total vessels: <%= @total_vessels  %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <p>
+          Total station: <%= @total_station %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

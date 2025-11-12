@@ -1,0 +1,28 @@
+<div class="card" id="<%= dom_id callsign %>">
+  <div class="card-header">
+    <p>
+      <strong>Call sign num:</strong>
+      <%= callsign.call_sign_num %>
+    </p>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Mmsi:</strong>
+      <%=callsign.display_mmsi(callsign.mmsi_id) %>
+    </p>
+    <p class="card-text">
+      <strong>User:</strong>
+      <%= callsign.display_user(callsign.user_id) %>
+    </p>
+    <p class="card-text">
+      <strong>Status:</strong>
+      <%= callsign.status %>
+    </p>
+    <p>
+      <strong>Documents:</strong>
+      <% callsign.documents.each do |document| %>
+        <div><%= link_to document.filename, document %></div>
+      <% end %>
+    </p>
+  </div>
+</div>

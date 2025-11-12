@@ -1,0 +1,11 @@
+<% content_for :title, "Editing vessel" %>
+<div class="row">
+  <div class="col d-flex flex-column p-2">
+    <h1>Editing vessel</h1>
+    <%= render "form", vessel: @vessel %>
+    <div>
+      <%= link_to "Show this vessel", @vessel, class: "btn btn-success" %> |
+      <%= link_to "Back to vessels", vessels_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

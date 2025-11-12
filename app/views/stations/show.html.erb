@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+<div class="card box-shadow-02" %>
+  <%= render @station %>
+  <div class="card-footer">
+    <%= link_to "Edit this station", edit_station_path(@station), class: "btn btn-warning m-2" %> |
+    <%= link_to "Back to stations", stations_path , class: "btn btn-primary m-2" %>
+    <%= button_to "Destroy this station", @station, method: :delete, class: "btn btn-danger m-2" %>
+  </div>
+</div>
