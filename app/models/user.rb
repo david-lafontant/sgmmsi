@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :timeoutable
 
   enum :role, { user: 0, admin: 1 }.freeze
-  has_many :mmsis
-  has_many :vessels
-  has_many :stations
-  has_many :callsigns
+  has_many :mmsis, dependent: :nullify
+  has_many :vessels, dependent: :nullify
+  has_many :stations, dependent: :nullify
+  has_many :callsigns, dependent: :nullify
 
   after_initialize :set_default_role, if: :new_record?
 
