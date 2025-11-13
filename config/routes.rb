@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "pages#home"
   resources :callsigns
   resources :stations
   resources :station_types
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   resources :mmsis, only: [:edit, :update, :destroy]
   get '/dashboard', to: "mmsis#dashboard", as: :dashboard
   devise_for :users
-  root "pages#home"
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
