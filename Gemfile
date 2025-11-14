@@ -60,6 +60,10 @@ group :development do
   gem 'web-console'
 end
 
+gem 'cancancan', '~> 3.6', '>= 3.6.1'
+gem 'chartkick', '~> 5.2', '>= 5.2.1'
 gem 'devise', '~> 4.9', '>= 4.9.3'
+gem 'devise_invitable', '~> 2.0', '>= 2.0.11'
+gem 'groupdate', '~> 6.7'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'securerandom', '~> 0.4.1'

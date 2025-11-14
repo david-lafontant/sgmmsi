@@ -1,6 +1,6 @@
 class Vessel < ApplicationRecord
   belongs_to :mmsi
-  belongs_to :user
+  belongs_to :user, optional: true
   validates :registration_number,
             :operation_area,
             :last_name,
