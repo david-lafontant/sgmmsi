@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
-  root "pages#home"
+  devise_for :users, :skip => [:registrations] 
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
   resources :callsigns
   resources :stations
   resources :station_types
   resources :vessels
   resources :mmsis, only: [:edit, :update, :destroy]
   get '/dashboard', to: "mmsis#dashboard", as: :dashboard
-
-  devise_for :users, :skip => [:registrations]
-  as :user do
-    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-    patch'users/:id' => 'devise/registrations#update', :as => 'user_registration'
-  end
-
-
+  
+  root "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
