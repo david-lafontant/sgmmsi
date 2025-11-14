@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   resources :vessels
   resources :mmsis, only: [:edit, :update, :destroy]
   get '/dashboard', to: "mmsis#dashboard", as: :dashboard
-  devise_for :users
+
+  devise_for :users, :skip => [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    patch'users/:id' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
