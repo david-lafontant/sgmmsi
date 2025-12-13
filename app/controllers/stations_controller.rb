@@ -71,7 +71,7 @@ class StationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def station_params
-    params.expect(station: [:registration_number, :latitude, :longitude, :municipality, :station_type_id, :last_name, :first_name, :company_name, :email,
+    params.expect(station: [:registration_number, :latitude, :longitude, :municipality, :station_type_id, :last_name, :first_name, :email,
                             :telephone, { documents: [] }])
   end
 end
