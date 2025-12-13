@@ -70,7 +70,7 @@ class VesselsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def vessel_params
-    params.expect(vessel: [:registration_number, :operation_area, :last_name, :first_name, :company_name, :email, :telephone, {
+    params.expect(vessel: [:registration_number, :operation_area, :name, {
                     documents: []
                   }])
   end
