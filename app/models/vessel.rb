@@ -2,12 +2,7 @@ class Vessel < ApplicationRecord
   belongs_to :mmsi
   belongs_to :user, optional: true
   validates :registration_number,
-            :operation_area,
-            :last_name,
-            :first_name,
-            :company_name,
-            :email,
-            :telephone, presence: true
+            :operation_area, :name, presence: true
   has_many_attached :documents
 
   def generate_vessel_mmsi
