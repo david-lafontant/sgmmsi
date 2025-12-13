@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_13_164458) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_13_004846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -143,11 +143,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_13_164458) do
   create_table "vessels", force: :cascade do |t|
     t.string "registration_number"
     t.string "operation_area"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "company_name"
-    t.string "email"
-    t.string "telephone"
     t.bigint "mmsi_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
