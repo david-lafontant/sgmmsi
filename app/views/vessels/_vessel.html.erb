@@ -49,32 +49,16 @@
       <%= link_to "Approve MMSI", edit_mmsi_url(vessel.mmsi.id), class: "btn btn-warning" %>
     </p>
     <p class="card-text">
-      <strong>Registration number:</strong>
+      <strong>Numero d'immatriculation:</strong>
       <%= vessel.registration_number %>
     </p>
     <p class="card-text">
-      <strong>Operation area:</strong>
+      <strong>Zone d'operation:</strong>
       <%= vessel.operation_area %>
     </p>
     <p class="card-text">
-      <strong>Last name:</strong>
-      <%= vessel.last_name %>
-    </p>
-    <p class="card-text">
-      <strong>First name:</strong>
-      <%= vessel.first_name %>
-    </p>
-    <p class="card-text">
-      <strong>Company name:</strong>
-      <%= vessel.company_name %>
-    </p>
-    <p class="card-text">
-      <strong>Email:</strong>
-      <%= vessel.email %>
-    </p>
-    <p class="card-text">
-      <strong>Telephone:</strong>
-      <%= vessel.telephone %>
+      <strong>Nom du navire:</strong>
+      <%= vessel.name %>
     </p>
     <p class="card-text">
       <strong>Mmsi:</strong>
