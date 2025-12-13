@@ -10,7 +10,6 @@ class Station < ApplicationRecord
             :municipality,
             :last_name,
             :first_name,
-            :company_name,
             :email,
             :telephone, presence: true
   def generate_station_mmsi(id)
