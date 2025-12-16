@@ -1,6 +1,5 @@
 class Vessel < ApplicationRecord
   belongs_to :mmsi
-  belongs_to :user, optional: true
   validates :registration_number,
             :operation_area, :name, presence: true
   has_many_attached :documents

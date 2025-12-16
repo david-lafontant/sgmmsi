@@ -1,5 +1,4 @@
 class Mmsi < ApplicationRecord
-  belongs_to :user, optional: true
   has_one :vessel, dependent: :destroy
   has_one :station, dependent: :destroy
   has_many :callsigns, dependent: :destroy

@@ -1,6 +1,5 @@
 class Callsign < ApplicationRecord
   belongs_to :mmsi
-  belongs_to :user, optional: true
   has_many_attached :documents
 
   after_initialize :set_default_status, if: :new_record?
