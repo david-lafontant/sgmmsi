@@ -1,28 +1,32 @@
-<%= form_with(model: mmsi, class: "d-flex flex-column p-2 m-2 box-shadow-01") do |form| %>
-  <% if mmsi.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(station.errors.count, "error") %> prohibited this mmsi from being updated:</h2>
-      <ul>
-        <% station.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="mb-3">
-    <fieldset>
-      <legend>Update MMSI Status</legend>
-      <div class="form-check">
-        <%= form.label :status, value: "Valider", class: "form-check-label"  %>
-        <%= form.radio_button :status, true, class: "form-check-inpu" %>
+ <% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= form_with(model: mmsi, class: "d-flex flex-column p-2 m-2 box-shadow-01") do |form| %>
+      <% if mmsi.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(station.errors.count, "error") %> prohibited this mmsi from being updated:</h2>
+          <ul>
+            <% station.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="mb-3">
+        <fieldset>
+          <legend>Update MMSI Status</legend>
+          <div class="form-check">
+            <%= form.label :status, value: "Valider", class: "form-check-label"  %>
+            <%= form.radio_button :status, true, class: "form-check-inpu" %>
+          </div>
+          <div class="form-check">
+            <%= form.label :status, value: "Invalider", class: "form-check-label"%>
+            <%= form.radio_button :status, false, class: "form-check-inpu"%>
+          </div>
+        </fieldset>
       </div>
-      <div class="form-check">
-        <%= form.label :status, value: "Invalider", class: "form-check-label"%>
-        <%= form.radio_button :status, false, class: "form-check-inpu"%>
+      <div class="mb-3">
+        <%= form.submit class: "btn btn-primary" %>
       </div>
-    </fieldset>
-  </div>
-  <div class="mb-3">
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <% end %>
+  <%end%>
+<%end%>
