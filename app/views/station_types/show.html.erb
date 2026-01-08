@@ -5,9 +5,13 @@
     <%end%>
     <%= render @station_type %>
     <div>
-      <%= link_to "Edit this station type", edit_station_type_path(@station_type), class: "btn btn-warning" %> |
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <%= link_to "Edit this station type", edit_station_type_path(@station_type), class: "btn btn-warning" %> |
+          <%= button_to "Destroy this station type", @station_type, method: :delete, class: "btn btn-danger" %>
+        <%end%>
+      <%end%>
       <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
-      <%= button_to "Destroy this station type", @station_type, method: :delete, class: "btn btn-danger" %>
     </div>
   </div>
 </div>

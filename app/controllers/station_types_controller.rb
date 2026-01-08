@@ -1,4 +1,5 @@
 class StationTypesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_station_type, only: %i[show edit update destroy]
 
   # GET /station_types or /station_types.json

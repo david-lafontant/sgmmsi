@@ -1,8 +1,12 @@
-<% content_for :title, "Editing station type" %>
-<h1>Editing station type</h1>
-<%= render "form", station_type: @station_type %>
-<br>
-<div class="p-2">
-  <%= link_to "Show this station type", @station_type, class: "btn btn-success" %> |
-  <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
-</div>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <% content_for :title, "Editing station type" %>
+    <h1>Editing station type</h1>
+    <%= render "form", station_type: @station_type %>
+    <br>
+    <div class="p-2">
+      <%= link_to "Show this station type", @station_type, class: "btn btn-success" %> |
+      <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
+    </div>
+  <%end%>
+<%end%>
