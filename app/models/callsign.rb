@@ -1,24 +1,19 @@
 class Callsign < ApplicationRecord
+  include EmailConcern
+  include CallsignConcern
+  include MmsiConcern
+  include UserConcern
+
   belongs_to :mmsi
   has_many_attached :documents
 
+  validate :user_id_exists
+  validate :mmsi_id_exists
   after_initialize :set_default_status, if: :new_record?
-
-  def display_mmsi(id)
-    Mmsi.find(id).mmsi_id
-  end
-
-  def display_user(id)
-    User.find(id).email
-  end
-
-  def generate_callsign
-    "call003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
-  end
 
   private
 
   def set_default_status
-    self[:status] ||= false
+    self[:status] ||= true
   end
 end
