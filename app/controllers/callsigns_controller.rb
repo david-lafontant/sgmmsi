@@ -1,4 +1,5 @@
 class CallsignsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_callsign, only: %i[show destroy]
 
   # GET /callsigns or /callsigns.json
