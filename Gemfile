@@ -59,7 +59,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 end
-
+gem 'active_storage_validations', '~> 3.0', '>= 3.0.3'
 gem 'cancancan', '~> 3.6', '>= 3.6.1'
 gem 'chartkick', '~> 5.2', '>= 5.2.1'
 gem 'devise', '~> 4.9', '>= 4.9.3'
