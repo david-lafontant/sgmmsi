@@ -53,7 +53,9 @@ class VesselsController < ApplicationController
 
   # DELETE /vessels/1 or /vessels/1.json
   def destroy
+    vessel_mmsi = @vessel.mmsi_id
     @vessel.destroy!
+    Mmsi.find(vessel_mmsi).destroy!
 
     respond_to do |format|
       format.html { redirect_to vessels_path, notice: 'Vessel was successfully destroyed.', status: :see_other }
