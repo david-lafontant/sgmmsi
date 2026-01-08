@@ -54,7 +54,9 @@ class StationsController < ApplicationController
 
   # DELETE /stations/1 or /stations/1.json
   def destroy
+    station_mmsi = @station.mmsi_id
     @station.destroy!
+    Mmsi.find(station_mmsi).destroy!
 
     respond_to do |format|
       format.html { redirect_to stations_path, notice: 'Station was successfully destroyed.', status: :see_other }
