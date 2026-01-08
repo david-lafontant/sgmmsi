@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_13_164458) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_16_202433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -88,7 +88,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_13_164458) do
     t.bigint "station_type_id", null: false
     t.string "last_name"
     t.string "first_name"
-    t.string "company_name"
     t.string "email"
     t.string "telephone"
     t.bigint "mmsi_id", null: false
@@ -143,16 +142,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_13_164458) do
   create_table "vessels", force: :cascade do |t|
     t.string "registration_number"
     t.string "operation_area"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "company_name"
-    t.string "email"
-    t.string "telephone"
     t.bigint "mmsi_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", null: false
     t.index ["mmsi_id"], name: "index_vessels_on_mmsi_id"
+    t.index ["name"], name: "index_vessels_on_name", unique: true
     t.index ["registration_number"], name: "index_vessels_on_registration_number", unique: true
     t.index ["user_id"], name: "index_vessels_on_user_id"
   end
@@ -160,11 +156,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_13_164458) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "callsigns", "mmsis"
-  add_foreign_key "callsigns", "users"
-  add_foreign_key "mmsis", "users"
   add_foreign_key "stations", "mmsis"
   add_foreign_key "stations", "station_types"
-  add_foreign_key "stations", "users"
   add_foreign_key "vessels", "mmsis"
-  add_foreign_key "vessels", "users"
 end

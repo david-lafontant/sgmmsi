@@ -1,8 +1,9 @@
 class Mmsi < ApplicationRecord
-  belongs_to :user, optional: true
+  include UserConcern
+
   has_one :vessel, dependent: :destroy
   has_one :station, dependent: :destroy
-  has_many :callsigns, dependent: :destroy
+  has_one :callsign, dependent: :destroy
   validates :mmsi_id, presence: true, uniqueness: true
 
   validates :category, inclusion: { in: %w[station vessel], message: 'invalid data' }

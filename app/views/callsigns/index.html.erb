@@ -1,9 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Callsigns" %>
-
 <h1>Callsigns</h1>
-
 <div id="callsigns">
   <% @callsigns.each do |callsign| %>
     <%= render callsign %>
@@ -12,5 +9,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New callsign", new_callsign_path %>

@@ -29,10 +29,6 @@
       <%= station.first_name %>
     </p>
     <p class="card-text">
-      <strong>Company name:</strong>
-      <%= station.company_name %>
-    </p>
-    <p class="card-text">
       <strong>Email:</strong>
       <%= station.email %>
     </p>
@@ -46,7 +42,7 @@
     </p>
     <p class="card-text">
       <strong>User:</strong>
-      <%= station.user.email %>
+      <%= station.display_email(station.user_id) %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>
@@ -89,10 +85,6 @@
       <%= station.first_name %>
     </p>
     <p class="card-text">
-      <strong>Company name:</strong>
-      <%= station.company_name %>
-    </p>
-    <p class="card-text">
       <strong>Email:</strong>
       <%= station.email %>
     </p>
@@ -106,7 +98,7 @@
     </p>
     <p class="card-text">
       <strong>User:</strong>
-      <%= station.user.email %>
+      <%= station.display_email(station.user_id) %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>

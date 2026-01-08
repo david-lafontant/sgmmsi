@@ -5,13 +5,13 @@ Rails.application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
-  resources :callsigns
+  resources :callsigns, only: [:show]
   resources :stations
   resources :station_types
   resources :vessels
   resources :mmsis, only: [:edit, :update, :destroy]
   get '/dashboard', to: "mmsis#dashboard", as: :dashboard
-  
+  get 'callsigns', to: "callsigns#index", as: :callsigns
   root "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -26,4 +26,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # 
+
 end
