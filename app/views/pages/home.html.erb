@@ -5,15 +5,14 @@
     <p class="col-lg-8 mx-auto fs-5 text-muted">
       Systeme de Gestion des MMSI
     </p>
-    <div class="d-inline-flex gap-2 mb-5">
-      <%= link_to vessels_path, class: "d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" do %>
+    <div class="d-flex flex-column flex-md-row gap-2 justify-content-center align-items-center  mb-5 ">
+      <%= link_to vessels_path, class: "button-29" do %>
         Ajouter Navire
-        <svg class="bi ms-2" width="24" height="24"><use xlink:href="#arrow-right-short"/></svg>
       <%end%>
-      <%= link_to dashboard_path, class: "btn btn-outline-primary btn-lg px-4 rounded-pill" do %>
+      <%= link_to dashboard_path, class: "button-29" do %>
         Dashboard
       <%end%>
-      <%= link_to stations_path, class: "btn btn-outline-secondary btn-lg px-4 rounded-pill" do %>
+      <%= link_to stations_path, class: "button-29" do %>
         Ajouter Station
       <%end%>
     </div>
