@@ -16,6 +16,9 @@
           <%= link_to "Stations", stations_path, class: "nav-link text-white"  %>
         </li>
         <li class="nav-item">
+          <%= link_to "Dashboard", dashboard_path, class: "nav-link text-white"  %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Types de Station", station_types_path, class: "nav-link text-white"  %>
         </li>
         <li class="nav-item">
@@ -28,17 +31,6 @@
             </li>
           <%end%>
         <%end%>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Help</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
