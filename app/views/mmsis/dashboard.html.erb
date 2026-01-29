@@ -1,43 +1,45 @@
-<div class="row">
+<div class="row" >
   <div class="col">
     <h1>
-      Dasboard
+      Dashboard
     </h1>
   </div>
 </div>
-<div class="row">
-  <div class="col col-md-4">
+<div class="row p-2 gap-sm-2">
+  <div class="col-sm-12 col-md-4 mb-2">
     <div class="card">
       <div class="card-body">
         <p>
-          <span>Number of mmsi assigned to stations:</span>&nbsp;<span class="badge bg-warning"><%= @stations  %></span>
+          <span>Stations:</span>&nbsp;<span class="badge bg-warning"><%= @stations  %></span>
         </p>
       </div>
     </div>
   </div>
-  <div class="col col-md-4">
+  <div class="col col-md-4 mb-2">
     <div class="card">
       <div class="card-body">
         <p>
-          <span>Number of mmsi assigned to vessels:</span>&nbsp;<span class="badge bg-warning"><%= @vessels  %></span>
+          <span>Vessels:</span>&nbsp;<span class="badge bg-warning"><%= @vessels  %></span>
         </p>
       </div>
     </div>
   </div>
-  <div class="col col-md-4">
+</div>
+<div class="row p-2 gap-sm-2">
+  <div class="col-sm-12 col-md-4 mb-2">
     <div class="card">
       <div class="card-body">
         <p>
-          Total vessels: <%= @total_vessels  %>
+          Total unapproved vessels: <%=  @unapproved_vessels %>
         </p>
       </div>
     </div>
   </div>
-  <div class="col col-md-4">
+  <div class="col col-md-4 mb-2">
     <div class="card">
       <div class="card-body">
         <p>
-          Total station: <%= @total_station %>
+          Total unapproved station: <%=  @unapproved_stations %>
         </p>
       </div>
     </div>
