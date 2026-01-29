@@ -3,6 +3,7 @@ class MmsisController < ApplicationController
   before_action :set_mmsi, only: %i[edit update destroy]
 
   def index
+    @mmsis = Mmsi.all
     @num_stations = Mmsi.where(category: 'station')
     @num_vessels = Mmsi.where(category: 'vessel')
   end
@@ -10,8 +11,8 @@ class MmsisController < ApplicationController
   def dashboard
     @stations = Mmsi.where(category: 'station').count
     @vessels = Mmsi.where(category: 'vessel').count
-    @total_vessels = 1_000_000
-    @total_station = 1_000_000
+    @unapproved_vessels = Mmsi.where(category: 'vessel').where(status: false).count
+    @unapproved_stations = Mmsi.where(category: 'station').where(status: false).count
   end
 
   def edit; end
