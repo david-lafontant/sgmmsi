@@ -80,6 +80,7 @@ test:
 #
 production:
   primary: &primary_production
+    url: <%= ENV["DATABASE_URL"] %>
     <<: *default
     database: sgmmsi_production
     username: sgmmsi
