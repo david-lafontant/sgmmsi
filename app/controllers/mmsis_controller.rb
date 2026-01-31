@@ -2,12 +2,6 @@ class MmsisController < ApplicationController
   load_and_authorize_resource
   before_action :set_mmsi, only: %i[edit update destroy]
 
-  def index
-    @mmsis = Mmsi.all
-    @num_stations = Mmsi.where(category: 'station')
-    @num_vessels = Mmsi.where(category: 'vessel')
-  end
-
   def dashboard
     @stations = Mmsi.where(category: 'station').count
     @vessels = Mmsi.where(category: 'vessel').count
