@@ -19,10 +19,14 @@
   </head>
   <body>
     <%= render "shared/navigation" %>
-    <main class="container">
-      <%= render "shared/flash" %>
-      <%= yield %>
+    <main class="container-fluid">
+      <div class="row">
+        <%= render "shared/sidebar"%>
+        <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <%= render "shared/flash" %>
+          <%= yield %>
+        </div>
+      </div>
     </main>
-    <%= render "shared/footer"%>
   </body>
 </html>
