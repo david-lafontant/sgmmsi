@@ -3,12 +3,12 @@ class CallsignsController < ApplicationController
   before_action :set_callsign, only: %i[show destroy]
 
   # GET /callsigns or /callsigns.json
-  def index
-    @callsigns = Callsign.all
-  end
+  # def index
+  #   @callsigns = Callsign.all
+  # end
 
   # GET /callsigns/1 or /callsigns/1.json
-  def show; end
+  # def show; end
 
   # GET /callsigns/new
   def new
