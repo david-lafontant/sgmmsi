@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
-  resources :callsigns, only: [:show]
   resources :stations
   resources :station_types
   resources :vessels
