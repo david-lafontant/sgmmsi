@@ -1,13 +1,17 @@
-<% content_for :title, "New station type" %>
-<div class="row">
-  <div class="col col-md-8 d-flex flex-column mx-auto py-3">
-    <h1>New station type</h1>
-    <div>
-      <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <% content_for :title, "New station type" %>
+    <div class="row">
+      <div class="col col-md-8 d-flex flex-column mx-auto py-3">
+        <h1>New station type</h1>
+        <div>
+          <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
+        </div>
+        <%= render "form", station_type: @station_type %>
+        <div>
+          <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
-    <%= render "form", station_type: @station_type %>
-    <div>
-      <%= link_to "Back to station types", station_types_path, class: "btn btn-primary" %>
-    </div>
-  </div>
-</div>
+  <%end%>
+<%end%>

@@ -16,6 +16,10 @@
         </div>
       <% end %>
     </div>
-    <%= link_to "New station type", new_station_type_path, class: "btn btn-primary" %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= link_to "New station type", new_station_type_path, class: "btn btn-primary" %>
+      <%end%>
+    <%end%>
   </div>
 </div>
