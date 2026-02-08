@@ -2,13 +2,6 @@ class MmsisController < ApplicationController
   load_and_authorize_resource
   before_action :set_mmsi, only: %i[edit update destroy]
 
-  def dashboard
-    @stations = Mmsi.where(category: 'station').count
-    @vessels = Mmsi.where(category: 'vessel').count
-    @unapproved_vessels = Mmsi.where(category: 'vessel').where(status: false).count
-    @unapproved_stations = Mmsi.where(category: 'station').where(status: false).count
-  end
-
   def edit; end
 
   def update
