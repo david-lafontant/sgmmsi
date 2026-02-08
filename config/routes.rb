@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :station_types
   resources :vessels
   resources :mmsis, only: [:edit, :update, :destroy]
-  get '/dashboard', to: "mmsis#dashboard", as: :dashboard
+  get '/dashboard', to: "pages#dashboard", as: :dashboard
   get 'callsigns', to: "callsigns#index", as: :callsigns
   root "pages#home"
 
