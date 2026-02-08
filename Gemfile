@@ -52,7 +52,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'factory_bot_rails', '~> 6.5', '>= 6.5.1'
   gem 'faker', '~> 3.6'
-  gem 'rspec-rails', '~> 8.0', '>= 8.0.1'
+  gem 'rspec-rails', '~> 8.0', '>= 8.0.2'
   gem 'rubocop', '>= 1.0', '< 2.0'
 end
 
