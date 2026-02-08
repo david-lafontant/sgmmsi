@@ -5,7 +5,11 @@
       <p style="color: green"><%= notice %></p>
     <%end%>
     <h1>Station types</h1>
-    <%= link_to "New station type", new_station_type_path, class: "btn btn-primary mb-3" %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= link_to "New station type", new_station_type_path, class: "btn btn-primary mb-3" %>
+      <%end%>
+    <%end%>
     <div id="station_types">
       <% @station_types.each do |station_type| %>
         <div class="box-shadow-02 mb-3 p-2">
@@ -16,6 +20,10 @@
         </div>
       <% end %>
     </div>
-    <%= link_to "New station type", new_station_type_path, class: "btn btn-primary" %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= link_to "New station type", new_station_type_path, class: "btn btn-primary" %>
+      <%end%>
+    <%end%>
   </div>
 </div>

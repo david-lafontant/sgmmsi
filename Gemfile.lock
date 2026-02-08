@@ -89,8 +89,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
-    brakeman (8.0.1)
+    brakeman (8.0.2)
       racc
+    breadcrumbs_on_rails (4.1.0)
+      railties (>= 5.0)
     builder (3.3.0)
     cancancan (3.6.1)
     chartkick (5.2.1)
@@ -125,6 +127,8 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
+    faker (3.6.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm-linux-gnu)
@@ -417,7 +421,8 @@ DEPENDENCIES
   active_storage_validations (~> 3.0, >= 3.0.3)
   bcrypt (~> 3.1.7)
   bootsnap
-  brakeman (~> 8.0, >= 8.0.1)
+  brakeman (~> 8.0, >= 8.0.2)
+  breadcrumbs_on_rails (~> 4.1)
   cancancan (~> 3.6, >= 3.6.1)
   chartkick (~> 5.2, >= 5.2.1)
   cssbundling-rails
@@ -425,6 +430,7 @@ DEPENDENCIES
   devise (~> 4.9, >= 4.9.3)
   devise_invitable (~> 2.0, >= 2.0.11)
   factory_bot_rails (~> 6.5, >= 6.5.1)
+  faker (~> 3.6)
   groupdate (~> 6.7)
   image_processing (~> 1.2)
   importmap-rails

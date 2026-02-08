@@ -11,7 +11,7 @@ class Ability
       can %i[create update read], Vessel
       can %i[create update read], Station
       can %i[create read], Mmsi
-      can %i[create read], StationType
+      can %i[read], StationType
       can %i[create read], Callsign
       cannot :manage, User
       cannot :invite, User

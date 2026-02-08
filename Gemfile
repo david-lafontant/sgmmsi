@@ -47,10 +47,11 @@ group :development, :test do
   gem 'debug', '~> 1.11', platforms: %i[mri windows], require: 'debug/prelude'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman', '~> 8.0', '>= 8.0.1', require: false
+  gem 'brakeman', '~> 8.0', '>= 8.0.2', require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'factory_bot_rails', '~> 6.5', '>= 6.5.1'
+  gem 'faker', '~> 3.6'
   gem 'rspec-rails', '~> 8.0', '>= 8.0.1'
   gem 'rubocop', '>= 1.0', '< 2.0'
 end
@@ -60,6 +61,7 @@ group :development do
   gem 'web-console'
 end
 gem 'active_storage_validations', '~> 3.0', '>= 3.0.3'
+gem 'breadcrumbs_on_rails', '~> 4.1'
 gem 'cancancan', '~> 3.6', '>= 3.6.1'
 gem 'chartkick', '~> 5.2', '>= 5.2.1'
 gem 'devise', '~> 4.9', '>= 4.9.3'

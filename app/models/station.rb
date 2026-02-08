@@ -8,7 +8,7 @@ class Station < ApplicationRecord
   ACCEPTED_CONTENT_TYPES = ['image/png', 'image/jpeg', 'application/pdf'].freeze
   registration_number_regex = Regexp.new(/\A[a-zA-Z]{2}\d{5}\z/, Regexp::IGNORECASE)
   phone_regex = Regexp.new(/\A\d{8}\z/, Regexp::IGNORECASE)
-  string_regex = Regexp.new(/\A(?=.{3,40}\z)[A-Za-z-]+(?: [A-Za-z-]+)*\z/, Regexp::IGNORECASE)
+  string_regex = Regexp.new(/\A[A-Za-z\s]{3,50}\z/, Regexp::IGNORECASE)
 
   belongs_to :station_type
   belongs_to :mmsi
