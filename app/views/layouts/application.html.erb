@@ -23,6 +23,9 @@
       <div class="row">
         <%= render "shared/sidebar"%>
         <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <ol class="breadcrumb">
+            <%= render_breadcrumbs :tag => :li, :separator => " > " %>
+          </ol>
           <%= render "shared/flash" %>
           <%= yield %>
         </div>
