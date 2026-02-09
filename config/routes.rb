@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :mmsis, only: [:edit, :update, :destroy]
   get '/dashboard', to: "pages#dashboard", as: :dashboard
   get 'callsigns', to: "callsigns#index", as: :callsigns
+  get 'unapproved_stations', to: "pages#unapproved_stations", as: :unapproved_stations
+  get 'unapproved_vessels', to: "pages#unapproved_vessels", as: :unapproved_vessels
   root "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -6,9 +6,17 @@ class PagesController < ApplicationController
 
   def dashboard
     add_breadcrumb 'dashboard', dashboard_path
-    @stations = Mmsi.where(category: 'station').count
-    @vessels = Mmsi.where(category: 'vessel').count
-    @unapproved_vessels = Mmsi.where(category: 'vessel').where(status: false).count
-    @unapproved_stations = Mmsi.where(category: 'station').where(status: false).count
+    @stations = Mmsi.where(category: :station).count
+    @vessels = Mmsi.where(category: :vessel).count
+    @unapproved_vessels = Mmsi.where(category: :vessel, status: false).count
+    @unapproved_stations = Mmsi.where(category: :station, status: false).count
+  end
+
+  def unapproved_stations
+    @stations = Station.includes(:mmsi).where(mmsis: { status: false, category: :station })
+  end
+
+  def unapproved_vessels
+    @vessels = Vessel.includes(:mmsi).where(mmsis: { status: false, category: :vessel })
   end
 end

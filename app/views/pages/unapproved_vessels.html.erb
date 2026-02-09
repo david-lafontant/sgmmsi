@@ -1,0 +1,49 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Unnaproved Vessels" %>
+<div class="row">
+  <div class="col d-flex flex-column mx-auto py-3">
+    <h1>Navires non approuv&eacute;s</h1>
+    <div id="unapproved_vessels" class="table-responsive small">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Immatriculation</th>
+            <th scope="col">Zone d'operation</th>
+            <th scope="col">MMSI</th>
+            <th scope="col">Callsign</th>
+            <th scope="col">MMSI Status</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vessels.each do |vessel| %>
+            <tr>
+              <td>
+                <%= vessel.registration_number %>
+              </td>
+              <td>
+                <%= vessel.operation_area %>
+              </td>
+              <td>
+                <%= vessel.mmsi_id%>
+              </td>
+              <td>
+                <%= vessel.get_callsign(vessel.mmsi_id) %>
+              </td>
+              <td>
+                <% if vessel.mmsi.status%>
+                  <p>Approuv&eacute;</p>
+                <%else%>
+                  <p>Non Approuv&eacute;</p>
+                <%end%>
+              </td>
+              <td>
+                <%= link_to "Details", vessel_url(vessel.id) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

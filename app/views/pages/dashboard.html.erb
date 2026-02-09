@@ -6,42 +6,40 @@
   </div>
 </div>
 <div class="row p-2 gap-sm-2">
-  <div class="col-sm-12 col-md-4 mb-2">
-    <div class="card">
-      <div class="card-body">
-        <p>
-          <span>Stations:</span>&nbsp;<span class="badge bg-warning"><%= @stations  %></span>
-        </p>
-      </div>
+  <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">Stations</div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @stations  %></h5>
+      <p class="card-text">Nombre de stations toutes catégories et statuts confondus</p>
     </div>
   </div>
-  <div class="col col-md-4 mb-2">
-    <div class="card">
-      <div class="card-body">
-        <p>
-          <span>Vessels:</span>&nbsp;<span class="badge bg-warning"><%= @vessels  %></span>
-        </p>
-      </div>
+  <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Navires</div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @vessels  %></h5>
+      <p class="card-text">Nombre de navires tout statut confondu</p>
     </div>
   </div>
-</div>
-<div class="row p-2 gap-sm-2">
-  <div class="col-sm-12 col-md-4 mb-2">
-    <div class="card">
+  <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <%= link_to unapproved_vessels_path , class: "nav-link" do %>
+      <div class="card-header">Navires non approuv&eacute;s</div>
       <div class="card-body">
-        <p>
-          Total unapproved vessels: <%=  @unapproved_vessels %>
+        <h5 class="card-title"><%=  @unapproved_vessels %></h5>
+        <p class="card-text">
+          Nombre de navires dont le MMSI n'a pas encore &eacute;t&eacute; approuv&eacute;
         </p>
       </div>
-    </div>
+    <%end%>
   </div>
-  <div class="col col-md-4 mb-2">
-    <div class="card">
+  <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <%= link_to unapproved_stations_path, class: "nav-link" do %>
+      <div class="card-header">Stations non approuv&eacute;s</div>
       <div class="card-body">
-        <p>
-          Total unapproved station: <%=  @unapproved_stations %>
+        <h5 class="card-title"><%=  @unapproved_stations %></h5>
+        <p class="card-text">
+          Nombre de stations toutes catégories confondues dont le MMSI n'a pas encore &eacute;t&eacute; approuv&eacute;
         </p>
       </div>
-    </div>
+    <%end%>
   </div>
 </div>

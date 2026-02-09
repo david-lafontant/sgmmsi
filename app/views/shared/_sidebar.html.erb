@@ -14,40 +14,57 @@
             <%= link_to "Dashboard", dashboard_path, class: "nav-link d-flex align-items-center gap-2 text-white" %>
           </li>
           <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Non approuv&eacute;s
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <%= link_to "Navires non appouvés", unapproved_vessels_path, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "Stations non appouvées", unapproved_stations_path, class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <%= link_to "Navires", vessels_path, class: "nav-link d-flex align-items-center gap-2 text-white" %>
           </li>
           <li class="nav-item">
             <%= link_to "Stations", stations_path, class: "nav-link d-flex align-items-center gap-2 text-white"  %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Types de Station", station_types_path, class: "nav-link d-flex align-items-center gap-2 text-white"  %>
-          </li>
           <% if current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to "Types de Station", station_types_path, class: "nav-link d-flex align-items-center gap-2 text-white"  %>
+            </li>
             <li class="nav-item">
               <%= link_to "invitation", new_user_invitation_path, class: "nav-link d-flex align-items-center gap-2 text-white"  %>
             </li>
           <%end%>
         </ul>
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-          <span>Saved reports</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <svg class="bi"><use xlink:href="#plus-circle"/></svg>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-auto">
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 text-white" href="#">
-              <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-              Current month
+        <% if false%>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+            <span>Saved reports</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <svg class="bi"><use xlink:href="#plus-circle"/></svg>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 text-white" href="#">
-              <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-              Last quarter
-            </a>
-          </li>
-        </ul>
+          </h6>
+          <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2 text-white" href="#">
+                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
+                Current month
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2 text-white" href="#">
+                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
+                Last quarter
+              </a>
+            </li>
+          </ul>
+        <%end%>
         <hr class="my-3">
         <ul class="nav flex-column mb-auto mx-3">
           <li class="nav-item">
