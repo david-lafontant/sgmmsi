@@ -27,21 +27,25 @@
 </div>
 <div class="row p-2 gap-sm-2">
   <div class="col-sm-12 col-md-4 mb-2">
-    <div class="card">
-      <div class="card-body">
-        <p>
-          Total unapproved vessels: <%=  @unapproved_vessels %>
-        </p>
+    <%= link_to unapproved_vessels_path do %>
+      <div class="card">
+        <div class="card-body">
+          <p>
+            Total unapproved vessels: <%=  @unapproved_vessels %>
+          </p>
+        </div>
       </div>
-    </div>
+    <%end%>
   </div>
   <div class="col col-md-4 mb-2">
-    <div class="card">
-      <div class="card-body">
-        <p>
-          Total unapproved station: <%=  @unapproved_stations %>
-        </p>
+    <%= link_to unapproved_stations_path do %>
+      <div class="card">
+        <div class="card-body">
+          <p>
+            Total unapproved station: <%=  @unapproved_stations %>
+          </p>
+        </div>
       </div>
-    </div>
+    <%end%>
   </div>
 </div>
