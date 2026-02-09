@@ -1,0 +1,49 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Stations" %>
+<div class="row">
+  <div class="col d-flex flex-column mx-auto py-3">
+    <h1>Stations non approuv&acute;s</h1>
+    <div id="unapproved_vstations" class="table-responsive small">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Immatriculation</th>
+            <th scope="col">Type</th>
+            <th scope="col">MMSI</th>
+            <th scope="col">Callsign</th>
+            <th scope="col">MMSI Status</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stations.each do |station| %>
+            <tr>
+              <td>
+                <%= station.registration_number%>
+              </td>
+              <td>
+                <%= station.display_station_type(station.station_type_id)%>
+              </td>
+              <td>
+                <%= station.display_mmsi(station.mmsi_id)%>
+              </td>
+              <td>
+                <%= station.get_callsign(station.mmsi_id)%>
+              </td>
+              <td>
+                <% if station.mmsi.status%>
+                  <p>Approuv&eacute;</p>
+                <%else%>
+                  <p>Non Approuv&eacute;</p>
+                <%end%>
+              </td>
+              <td>
+                <%= link_to "Details", station %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
