@@ -35,6 +35,9 @@ class Station < ApplicationRecord
   validates :telephone, format: { with: phone_regex, message: 'invalid format' }
   validates :registration_number, format: { with: registration_number_regex,
                                             message: 'invalid format' }
+  def display_station_type(id)
+    StationType.find(id).category
+  end
 
   def generate_station_mmsi(id)
     mmsi = nil
@@ -54,8 +57,14 @@ class Station < ApplicationRecord
     end
     mmsi
   end
+  before_save :upcase_inputs
 
-  def display_station_type(id)
-    StationType.find(id).category
+  private
+
+  def upcase_inputs
+    self.registration_number = registration_number.strip.upcase
+    self.last_name = last_name.strip.upcase
+    self.first_name = first_name.strip.upcase
+    self.municipality = municipality.strip.upcase
   end
 end
