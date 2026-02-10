@@ -39,18 +39,18 @@ class Station < ApplicationRecord
     StationType.find(id).category
   end
 
-  def generate_station_mmsi(id)
+  def generate_station_mmsi(category)
     mmsi = nil
-    case id
-    when 1
+    case category
+    when 'COTIERE'
       mmsi = "003291#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
-    when 2
+    when 'PORTUAIRES'
       mmsi = "003292#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
-    when 3
+    when 'PILOTAGE'
       mmsi = "003293#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
-    when 4
+    when 'REPETEUR AIS'
       mmsi = "003294#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
-    when 5
+    when 'BASE AIS'
       mmsi = "003295#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
     else
       raise StandardError, 'Error.'
