@@ -1,7 +1,7 @@
 class StationType < ApplicationRecord
   has_many :stations
 
-  string_regex = Regexp.new(/\A(?=.{3,40}\z)[A-Za-z-]+(?: [A-Za-z-]+)*\z/, Regexp::IGNORECASE)
+  string_regex = Regexp.new(/\A[A-Za-z\s]{3,50}\z/, Regexp::IGNORECASE)
   validates :category, presence: true, format: { with: string_regex, message: 'invalid format' }
   before_save :upcase_inputs
 
