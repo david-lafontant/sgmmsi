@@ -17,7 +17,17 @@ class Vessel < ApplicationRecord
   validates :name, :operation_area, format: { with: string_regex, message: 'Invalid format' }
   validates :registration_number, format: { with: registration_number_regex, message: 'Invalid format' }
   validates :documents, total_size: { less_than_or_equal_to: 20.megabytes }, content_type: ACCEPTED_CONTENT_TYPES
+
+  before_save :upcase_inputs
   def generate_vessel_mmsi
     "003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+  end
+
+  private
+
+  def upcase_inputs
+    self.name = name.strip.upcase
+    self.registration_number = registration_number.strip.upcase
+    self.operation_area = operation_area.strip.upcase
   end
 end
