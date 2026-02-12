@@ -1,0 +1,17 @@
+<%= field = [:immatriculation,
+:type,
+:mmsi,
+:callsign,
+:latitude,
+:longitude,
+:commune].join(",") %>
+<% @stations.each do |station| %>
+  <% immatriculation = station.registration_number%>
+  <% type = station.station_type.category %>
+  <% mmsi = station.mmsi.mmsi_id.to_s %>
+  <% callsign = station.callsign.call_sign_num %>
+  <% latitude = station.latitude.to_s %>
+  <% longitude = (station.longitude*-1).to_s %>
+  <% commune =  station.municipality %>
+  <%= [immatriculation,type,mmsi,callsign,latitude,longitude,commune,].join(",") %>
+<%end%>
