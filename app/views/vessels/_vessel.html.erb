@@ -18,10 +18,10 @@
     </p>
     <p class="card-text">
       <strong>Callsign:</strong>
-      <%= vessel.get_callsign(vessel.mmsi_id) %>
+      <%= vessel.mmsi.callsign.call_sign_num  %>
     </p>
     <p class="card-text">
-      <strong>User:</strong>
+      <strong>Created by:</strong>
       <%= vessel.display_email(vessel.user_id) %>
     </p>
     <p class="card-text">
