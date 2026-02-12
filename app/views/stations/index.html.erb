@@ -29,7 +29,7 @@
                 <%= station.mmsi.mmsi_id %>
               </td>
               <td>
-                <%= station.get_callsign(station.mmsi_id)%>
+                <%= station.mmsi.callsign.call_sign_num %>
               </td>
               <td>
                 <% if station.mmsi.status%>
