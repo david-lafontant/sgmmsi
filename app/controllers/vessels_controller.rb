@@ -4,7 +4,7 @@ class VesselsController < ApplicationController
 
   # GET /vessels or /vessels.json
   def index
-    @vessels = Vessel.all
+    @vessels = Vessel.includes(:mmsi).all
   end
 
   # GET /vessels/1 or /vessels/1.json
