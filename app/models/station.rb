@@ -12,6 +12,7 @@ class Station < ApplicationRecord
 
   belongs_to :station_type
   belongs_to :mmsi
+  has_one :callsign, through: :mmsi
   has_many_attached :documents
 
   validates :documents, total_size: { less_than_or_equal_to: 20.megabytes }, content_type: ACCEPTED_CONTENT_TYPES # restricts the total size to <= 10MB
