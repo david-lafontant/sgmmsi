@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :stations
   resources :station_types
   resources :vessels
-  resources :mmsis, only: [:edit, :update, :destroy]
+  resources :mmsis, only: [:edit, :update]
   get '/dashboard', to: "pages#dashboard", as: :dashboard
-  get 'callsigns', to: "callsigns#index", as: :callsigns
+  # get 'callsigns', to: "callsigns#index", as: :callsigns
   get 'unapproved_stations', to: "pages#unapproved_stations", as: :unapproved_stations
   get 'unapproved_vessels', to: "pages#unapproved_vessels", as: :unapproved_vessels
   root "pages#home"

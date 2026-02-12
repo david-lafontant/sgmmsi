@@ -5,6 +5,7 @@ class Vessel < ApplicationRecord
   include UserConcern
 
   belongs_to :mmsi
+  has_one :callsign, through: :mmsi
   has_many_attached :documents
 
   string_regex = Regexp.new(/\A(?=.{3,40}\z)[A-Za-z-]+(?: [A-Za-z-]+)*\z/, Regexp::IGNORECASE)

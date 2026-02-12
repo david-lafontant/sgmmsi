@@ -25,10 +25,10 @@
                 <%= vessel.operation_area %>
               </td>
               <td>
-                <%= vessel.mmsi_id%>
+                <%= vessel.mmsi.mmsi_id %>
               </td>
               <td>
-                <%= vessel.get_callsign(vessel.mmsi_id) %>
+                <%=vessel.callsign.call_sign_num %>
               </td>
               <td>
                 <% if vessel.mmsi.status%>

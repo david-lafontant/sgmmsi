@@ -4,7 +4,7 @@ class StationsController < ApplicationController
 
   # GET /stations or /stations.json
   def index
-    @stations = Station.all
+    @stations = Station.includes(:mmsi).includes(:callsign).includes(:station_type).all
   end
 
   # GET /stations/1 or /stations/1.json
