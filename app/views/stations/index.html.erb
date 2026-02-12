@@ -23,13 +23,13 @@
                 <%= station.registration_number%>
               </td>
               <td>
-                <%= station.display_station_type(station.station_type_id)%>
+                <%= station.station_type.category %>
               </td>
               <td>
                 <%= station.mmsi.mmsi_id %>
               </td>
               <td>
-                <%= station.mmsi.callsign.call_sign_num %>
+                <%= station.callsign.call_sign_num %>
               </td>
               <td>
                 <% if station.mmsi.status%>
