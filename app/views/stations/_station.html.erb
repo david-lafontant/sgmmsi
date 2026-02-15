@@ -46,7 +46,7 @@
     </p>
     <p class="card-text">
       <strong>User:</strong>
-      <%= station.display_email(station.user_id) %>
+      <%= station.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>
@@ -106,7 +106,7 @@
     </p>
     <p class="card-text">
       <strong>Created by:</strong>
-      <%= station.display_email(station.user_id) %>
+      <%= station.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>
