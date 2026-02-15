@@ -3,6 +3,6 @@ class RemoveUserForeignKeyFromMmsis < ActiveRecord::Migration[8.0]
     remove_foreign_key :mmsis, :users
   end
   def down
-    remove_foreign_key :mmsis, :users
+    add_foreign_key :mmsis, :users
   end
 end
