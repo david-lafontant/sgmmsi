@@ -23,7 +23,7 @@ class VesselsController < ApplicationController
     @vessel = Vessel.new(vessel_params)
     @vessel.user_id = current_user.id
     mmsi = @vessel.generate_vessel_mmsi
-    ref1 = Mmsi.create(mmsi_id: mmsi, user_id: current_user.id, category: 'vessel')
+    ref1 = Mmsi.create(mmsi_number: mmsi, user_id: current_user.id, category: 'vessel')
     call1 = Callsign.create(mmsi_id: ref1.id, user_id: current_user.id, call_sign_num: @vessel.generate_callsign, status: false)
     @vessel.mmsi_id = ref1.id
     respond_to do |format|

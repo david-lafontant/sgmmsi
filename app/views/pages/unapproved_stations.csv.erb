@@ -8,7 +8,7 @@
 <% @stations.each do |station| %>
   <% immatriculation = station.registration_number%>
   <% type = station.station_type.category %>
-  <% mmsi = station.mmsi.mmsi_id.to_s %>
+  <% mmsi = station.mmsi.mmsi_number.to_s %>
   <% callsign = station.callsign.call_sign_num %>
   <% latitude = station.latitude.to_s %>
   <% longitude = (station.longitude*-1).to_s %>
