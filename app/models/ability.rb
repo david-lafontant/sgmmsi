@@ -13,7 +13,8 @@ class Ability
       can %i[create read], Mmsi
       can %i[read], StationType
       can %i[create read], Callsign
-      cannot :manage, User
+      cannot %i[create destroy], User
+      can :update, User, [:password], id: user.id
       cannot :invite, User
     else
       cannot :manage, :all
