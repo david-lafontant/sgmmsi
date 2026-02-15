@@ -4,6 +4,7 @@ class Mmsi < ApplicationRecord
   has_one :vessel, dependent: :destroy
   has_one :station, dependent: :destroy
   has_one :callsign, dependent: :destroy
+  belongs_to :user
   validates :mmsi_number, presence: true, uniqueness: true
 
   validates :category, inclusion: { in: %w[station vessel], message: 'invalid data' }
