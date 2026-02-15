@@ -61,6 +61,7 @@ group :development do
   gem 'web-console'
 end
 gem 'active_storage_validations', '~> 3.0', '>= 3.0.3'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'breadcrumbs_on_rails', '~> 4.1'
 gem 'cancancan', '~> 3.6', '>= 3.6.1'
 gem 'chartkick', '~> 5.2', '>= 5.2.1'

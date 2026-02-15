@@ -4,7 +4,11 @@ class StationsController < ApplicationController
 
   # GET /stations or /stations.json
   def index
-    @stations = Station.includes(:mmsi, :callsign, :user, :station_type).all
+    @stations = Station.includes(:mmsi, :callsign, :user, :station_type).order(created_at: :desc).all
+    respond_to do |format|
+      format.html { @stations = @stations.page(params[:page]) }
+      format.csv { send_data @stations }
+    end
   end
 
   # GET /stations/1 or /stations/1.json
