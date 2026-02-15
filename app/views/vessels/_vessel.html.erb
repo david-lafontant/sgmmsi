@@ -22,7 +22,7 @@
     </p>
     <p class="card-text">
       <strong>Created by:</strong>
-      <%= vessel.display_email(vessel.user_id) %>
+      <%= vessel.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>
@@ -58,7 +58,7 @@
     </p>
     <p class="card-text">
       <strong>User:</strong>
-      <%= vessel.display_email(vessel.user_id) %>
+      <%= vessel.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>
