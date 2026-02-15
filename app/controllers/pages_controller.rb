@@ -13,10 +13,10 @@ class PagesController < ApplicationController
   end
 
   def unapproved_stations
-    @stations = Station.includes(:mmsi).includes(:station_type).includes(:callsign).where(mmsis: { status: false, category: :station })
+    @stations = Station.includes(:mmsi, :station_type, :callsign, :user).where(mmsis: { status: false, category: :station })
   end
 
   def unapproved_vessels
-    @vessels = Vessel.includes(:mmsi).includes(:callsign).where(mmsis: { status: false, category: :vessel })
+    @vessels = Vessel.includes(:mmsi, :callsign, :user).where(mmsis: { status: false, category: :vessel })
   end
 end
