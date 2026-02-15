@@ -3,8 +3,15 @@
 <div class="row">
   <div class="col d-flex flex-column mx-auto py-3">
     <h1>Stations non approuv&eacute;es</h1>
-    <%= link_to "Telecharger la liste", unapproved_stations_path(format: :csv) , class: "d-block button-37", download: "stations_non_approuvees_#{Time.current.strftime("%m-%d-%Y--%H-%M-%S")}.csv" %>
-    <div id="unapproved_stations" class="table-responsive small">
+    <div class="mb-3">
+      <%= link_to "Telecharger la liste", unapproved_stations_path(format: :csv) , class: "d-block button-37", download: "stations_non_approuvees_#{Time.current.strftime("%m-%d-%Y--%H-%M-%S")}.csv" %>
+    </div>
+    <div class="mb-3">
+      <%= paginate @stations, theme: 'bootstrap-5',
+                   pagination_class: "pagination-sm flex-wrap justify-content-center",
+                   nav_class: "d-inline-block" %>
+    </div>
+    <div id="unapproved_stations" class="table-responsive small mb-3">
       <table class="table table-striped table-sm">
         <thead>
           <tr>
@@ -45,6 +52,11 @@
           <% end %>
         </tbody>
       </table>
+      <div class="mb-3">
+        <%= paginate @stations, theme: 'bootstrap-5',
+                   pagination_class: "pagination-sm flex-wrap justify-content-center",
+                   nav_class: "d-inline-block" %>
+      </div>
     </div>
   </div>
 </div>
