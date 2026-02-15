@@ -4,7 +4,11 @@ class VesselsController < ApplicationController
 
   # GET /vessels or /vessels.json
   def index
-    @vessels = Vessel.includes(:mmsi, :callsign, :user).all
+    @vessels = Vessel.includes(:mmsi, :callsign, :user).order(created_at: :desc).all
+    respond_to do |format|
+      format.html { @vessels = @vessels.page(params[:page]) }
+      format.csv { send_data @vessels }
+    end
   end
 
   # GET /vessels/1 or /vessels/1.json
