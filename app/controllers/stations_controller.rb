@@ -4,7 +4,7 @@ class StationsController < ApplicationController
 
   # GET /stations or /stations.json
   def index
-    @stations = Station.includes(:mmsi).includes(:callsign).includes(:station_type).all
+    @stations = Station.includes(:mmsi, :callsign, :user, :station_type).all
   end
 
   # GET /stations/1 or /stations/1.json
@@ -24,7 +24,7 @@ class StationsController < ApplicationController
     @station.user_id = current_user.id
     station_category = StationType.find(@station.station_type_id).category
     mmsi = @station.generate_station_mmsi(station_category)
-    ref1 = Mmsi.create(mmsi_id: mmsi, user_id: current_user.id, category: 'station')
+    ref1 = Mmsi.create(mmsi_number: mmsi, user_id: current_user.id, category: 'station')
     call1 = Callsign.create(mmsi_id: ref1.id, user_id: current_user.id, call_sign_num: @station.generate_callsign, status: false)
     @station.mmsi_id = ref1.id
 

@@ -5,6 +5,7 @@ class Callsign < ApplicationRecord
   include UserConcern
 
   belongs_to :mmsi
+  belongs_to :user
   has_many_attached :documents
 
   validate :user_id_exists

@@ -18,7 +18,7 @@
     </p>
     <p class="card-text">
       <strong>Station type:</strong>
-      <%= station.display_station_type(station.station_type_id) %>
+      <%= station.station_type.category %>
     </p>
     <p class="card-text">
       <strong>Last name:</strong>
@@ -38,15 +38,15 @@
     </p>
     <p class="card-text">
       <strong>Mmsi:</strong>
-      <%= station.mmsi.mmsi_id %>
+      <%= station.mmsi.mmsi_number %>
     </p>
     <p class="card-text">
       <strong>Callsign:</strong>
-      <%= station.get_callsign(station.mmsi_id) %>
+      <%= station.callsign.call_sign_num %>
     </p>
     <p class="card-text">
       <strong>User:</strong>
-      <%= station.display_email(station.user_id) %>
+      <%= station.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>
@@ -78,7 +78,7 @@
     </p>
     <p class="card-text">
       <strong>Station type:</strong>
-      <%= station.display_station_type(station.station_type_id) %>
+      <%= station.station_type.category %>
     </p>
     <p class="card-text">
       <strong>Last name:</strong>
@@ -98,15 +98,15 @@
     </p>
     <p class="card-text">
       <strong>Mmsi:</strong>
-      <%= station.mmsi.mmsi_id %>
+      <%= station.mmsi.mmsi_number %>
     </p>
     <p class="card-text">
       <strong>Callsign:</strong>
-      <%= station.get_callsign(station.mmsi_id) %>
+      <%= station.callsign.call_sign_num %>
     </p>
     <p class="card-text">
       <strong>Created by:</strong>
-      <%= station.display_email(station.user_id) %>
+      <%= station.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>

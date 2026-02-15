@@ -5,6 +5,7 @@ class Vessel < ApplicationRecord
   include UserConcern
 
   belongs_to :mmsi
+  belongs_to :user
   has_one :callsign, through: :mmsi
   has_many_attached :documents
 

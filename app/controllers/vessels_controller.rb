@@ -4,7 +4,7 @@ class VesselsController < ApplicationController
 
   # GET /vessels or /vessels.json
   def index
-    @vessels = Vessel.includes(:mmsi).includes(:callsign).all
+    @vessels = Vessel.includes(:mmsi, :callsign, :user).all
   end
 
   # GET /vessels/1 or /vessels/1.json
@@ -23,7 +23,7 @@ class VesselsController < ApplicationController
     @vessel = Vessel.new(vessel_params)
     @vessel.user_id = current_user.id
     mmsi = @vessel.generate_vessel_mmsi
-    ref1 = Mmsi.create(mmsi_id: mmsi, user_id: current_user.id, category: 'vessel')
+    ref1 = Mmsi.create(mmsi_number: mmsi, user_id: current_user.id, category: 'vessel')
     call1 = Callsign.create(mmsi_id: ref1.id, user_id: current_user.id, call_sign_num: @vessel.generate_callsign, status: false)
     @vessel.mmsi_id = ref1.id
     respond_to do |format|

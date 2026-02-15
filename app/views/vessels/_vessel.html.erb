@@ -14,7 +14,7 @@
     </p>
     <p class="card-text">
       <strong>Mmsi:</strong>
-      <%= vessel.mmsi.mmsi_id %>
+      <%= vessel.mmsi.mmsi_number %>
     </p>
     <p class="card-text">
       <strong>Callsign:</strong>
@@ -22,7 +22,7 @@
     </p>
     <p class="card-text">
       <strong>Created by:</strong>
-      <%= vessel.display_email(vessel.user_id) %>
+      <%= vessel.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>
@@ -50,15 +50,15 @@
     </p>
     <p class="card-text">
       <strong>Mmsi:</strong>
-      <%= vessel.mmsi.mmsi_id %>
+      <%= vessel.mmsi.mmsi_number %>
     </p>
     <p class="card-text">
       <strong>Callsign:</strong>
-      <%= vessel.get_callsign(vessel.mmsi_id) %>
+      <%= vessel.mmsi.callsign.call_sign_num  %>
     </p>
     <p class="card-text">
       <strong>User:</strong>
-      <%= vessel.display_email(vessel.user_id) %>
+      <%= vessel.user.email %>
     </p>
     <p class="card-text">
       <strong>Documents:</strong>

@@ -2,7 +2,7 @@
 <% @vessels.each do |vessel| %>
   <% registration = vessel.registration_number %>
   <% area = vessel.operation_area %>
-  <% mmsi =  vessel.mmsi.mmsi_id.to_s %>
+  <% mmsi =  vessel.mmsi.mmsi_number.to_s %>
   <% callsign = vessel.callsign.call_sign_num %>
   <% date = vessel.created_at.strftime("%d/%B/%Y")%>
   <%= [registration, area, mmsi, callsign, date].join(",") %>

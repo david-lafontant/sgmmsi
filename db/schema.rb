@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_16_202433) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_15_164208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -64,13 +64,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_16_202433) do
   end
 
   create_table "mmsis", force: :cascade do |t|
-    t.string "mmsi_id"
+    t.string "mmsi_number"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category", default: "vessel", null: false
     t.boolean "status", default: false, null: false
-    t.index ["mmsi_id"], name: "index_mmsis_on_mmsi_id", unique: true
+    t.index ["mmsi_number"], name: "index_mmsis_on_mmsi_number", unique: true
     t.index ["user_id"], name: "index_mmsis_on_user_id"
   end
 
@@ -132,6 +132,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_16_202433) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.boolean "banned", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
@@ -158,7 +159,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_16_202433) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "callsigns", "mmsis"
+  add_foreign_key "callsigns", "users"
+  add_foreign_key "mmsis", "users"
   add_foreign_key "stations", "mmsis"
   add_foreign_key "stations", "station_types"
+  add_foreign_key "stations", "users"
   add_foreign_key "vessels", "mmsis"
+  add_foreign_key "vessels", "users"
 end
