@@ -9,6 +9,10 @@ body {
   background-color: $white;
 }
 
+body:has(.welcome){
+  background-color:  hsla(195, 100%, 33%, 0.5);;
+}
+
 .bi {
   display: inline-block;
   width: 1rem;
