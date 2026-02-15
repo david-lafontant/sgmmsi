@@ -8,11 +8,11 @@
   <div class="card-body">
     <p class="card-text">
       <strong>Mmsi:</strong>
-      <%=callsign.display_mmsi(callsign.mmsi_id) %>
+      <%=callsign.mmsi.mmsi_number %>
     </p>
     <p class="card-text">
       <strong>User:</strong>
-      <%= callsign.display_email(callsign.user_id) %>
+      <%= callsign.user.email %>
     </p>
     <p class="card-text">
       <strong>Status:</strong>
