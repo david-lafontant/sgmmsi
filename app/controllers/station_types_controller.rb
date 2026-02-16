@@ -4,7 +4,7 @@ class StationTypesController < ApplicationController
 
   # GET /station_types or /station_types.json
   def index
-    @station_types = StationType.all
+    @station_types = StationType.includes(:stations).all
   end
 
   # GET /station_types/1 or /station_types/1.json
