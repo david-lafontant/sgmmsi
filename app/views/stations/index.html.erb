@@ -21,6 +21,9 @@
       </div>
     </div>
     <div class="my-3">
+      Found <%= @stations.total_count %> stations
+    </div>
+    <div class="mb-3">
       <%= paginate @stations, theme: 'bootstrap-5',
                    pagination_class: "pagination-sm flex-wrap justify-content-center",
                    nav_class: "d-inline-block" %>
