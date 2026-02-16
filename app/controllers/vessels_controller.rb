@@ -4,10 +4,26 @@ class VesselsController < ApplicationController
 
   # GET /vessels or /vessels.json
   def index
-    @vessels = Vessel.includes(:mmsi, :callsign, :user).order(created_at: :desc).all
+    @q = Vessel.ransack(search_params)
+    @vessels = @q.result(distinct: true).includes(:mmsi, :callsign, :user).order(created_at: :desc).all
     respond_to do |format|
       format.html { @vessels = @vessels.page(params[:page]) }
-      format.csv { send_data @vessels }
+      # format.csv { send_data @vessels }
+    end
+  end
+
+  # GET /stations/search
+  # Alternative endpoint for AJAX searches
+  def search
+    @q = Vessel.ransack(search_params)
+    @vessels = @q.result(distinct: true)
+      .includes(:mmsi, :callsign, :user)
+      .limit(50)
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @vessels }
+      format.turbo_stream
     end
   end
 
@@ -80,5 +96,22 @@ class VesselsController < ApplicationController
     params.expect(vessel: [:registration_number, :operation_area, :name, {
                     documents: []
                   }])
+  end
+
+  def search_params
+    params.fetch(:q, {}).permit(
+      :name_cont,
+      :operation_area_cont,
+      :registration_number_eq,
+      :user_id_eq,
+      :created_at_gteq,
+      :created_at_lteq,
+      :mmsi_mmsi_number_cont,
+      :mmsi_status_eq,
+      :callsign_call_sign_num_cont,
+      :s, # Sort parameter
+      operation_area_in: [],
+      created_at_in: []
+    )
   end
 end
