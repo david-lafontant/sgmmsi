@@ -63,16 +63,14 @@ class Station < ApplicationRecord
   def self.ransackable_attributes(_auth_object = nil)
     %w[
       registration_number
-      latitude
-      longitude
       municipality
       station_type_id
-      last_name
-      first_name
       email
       telephone
       mmsi_id
       user_id
+      created_at
+      updated_at
     ]
   end
 
