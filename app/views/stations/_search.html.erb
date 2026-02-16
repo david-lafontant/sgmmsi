@@ -1,0 +1,81 @@
+<div>
+  <%= search_form_for @q, url: stations_path, method: :get do |f| %>
+    <h2>Advanced Search</h2>
+    <div class="input-group mb-3">
+      <span class="input-group-text" ><%= f.label :municipality_cont, 'Commune' %></span>
+      <%= f.text_field :municipality_cont, class: 'form-control' , placeholder: 'Commune...'%>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >
+        <%= f.label :registration_number_eq, 'Immatriculation' %>
+      </span>
+      <%= f.text_field :registration_number_eq, class: 'form-control',
+          placeholder: 'Immatriculation...' %>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >
+        <%= f.label :email_cont, 'Email ...' %>
+      </span>
+      <%= f.text_field :email_cont, class: 'form-control',
+          placeholder: 'Emsil du gérant ...' %>
+    </div>
+    <div class="mb-1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >
+        <%= f.label :mmsi_mmsi_number_cont, 'MMSI...' %>
+      </span>
+      <%= f.text_field :mmsi_mmsi_number_cont, class: 'form-control',
+          placeholder: 'MMSI...' %>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >
+        <%= f.label :callsign_call_sign_num_cont, 'Callsign...' %>
+      </span>
+      <%= f.text_field :callsign_call_sign_num_cont, class: 'form-control',
+          placeholder: 'Callsign...' %>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" > <%= f.label :station_type_category_eq, 'Operator'  %>
+      </span>
+      <%= f.collection_select :station_type_id_eq,
+          StationType.order(:category),
+          :id, :category,
+          { include_blank: 'Type de stations' },
+          { class: 'form-select' } %>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >
+        <%= f.label :user_id_eq, 'Operateur de saisie' %>
+      </span>
+      <%= f.collection_select :user_id_eq,
+          User.order(:email),
+          :id, :email,
+          { include_blank: 'Liste des operateurs' },
+          { class: 'form-select' } %>
+    </div>
+    <div class="mb-1">
+      <div class="form-check">
+        <%= f.check_box :mmsi_status_eq, 
+            { class: 'form-check-input' }, 
+            'true', nil %>
+        <%= f.label :active_eq, 'Station approuvée', class: 'form-check-label' %>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >
+        <%= f.label :created_at_gteq, 'From Date' %>
+      </span>
+      <%= f.date_field :created_at_gteq, class: 'form-control' %>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >
+        <%= f.label :created_at_lteq, 'To Date' %>
+      </span>
+      <%= f.date_field :created_at_lteq, class: 'form-control' %>
+    </div>
+    <div class="mb-1">
+      <%= f.submit 'Search', class: 'btn btn-primary' %>
+      <%= link_to 'Reset', stations_path, class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
