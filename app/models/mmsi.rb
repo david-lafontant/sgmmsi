@@ -10,6 +10,18 @@ class Mmsi < ApplicationRecord
   validates :category, inclusion: { in: %w[station vessel], message: 'invalid data' }
   after_initialize :set_default_status, if: :new_record?
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[mmsi_number
+       user_id
+       created_at
+       category
+       status]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[station vessel callsign user]
+  end
+
   private
 
   def set_default_status
