@@ -9,14 +9,14 @@ class Vessel < ApplicationRecord
   has_one :callsign, through: :mmsi
   has_many_attached :documents
 
-  string_regex = Regexp.new(/\A(?=.{3,40}\z)[A-Za-z-]+(?: [A-Za-z-]+)*\z/, Regexp::IGNORECASE)
+  string_regex = Regexp.new(/\A[[:alpha:]][[:alnum:]\- ]*\z/u, Regexp::IGNORECASE)
   registration_number_regex = Regexp.new(/\A[a-zA-Z]{2}\d{5}\z/, Regexp::IGNORECASE)
   ACCEPTED_CONTENT_TYPES = ['image/png', 'image/jpeg', 'application/pdf'].freeze
   validates :registration_number,
             :operation_area, :name, presence: true
   validate :user_id_exists
   validate :mmsi_id_exists
-  validates :name, :operation_area, format: { with: string_regex, message: 'Invalid format' }
+  validates :name, :operation_area, length: { in: 3..40 }, format: { with: string_regex, message: 'Invalid format' }
   validates :registration_number, format: { with: registration_number_regex, message: 'Invalid format' }
   validates :documents, total_size: { less_than_or_equal_to: 20.megabytes }, content_type: ACCEPTED_CONTENT_TYPES
 
