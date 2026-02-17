@@ -1,6 +1,6 @@
 class CallsignsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_callsign, only: %i[show destroy]
+  before_action :set_callsign, only: %i[destroy]
 
   # GET /callsigns or /callsigns.json
   # def index
@@ -16,9 +16,9 @@ class CallsignsController < ApplicationController
   end
 
   # GET /callsigns/1/edit
-  def edit
-    @callsign = Callsign.find(params.expect(:id))
-  end
+  # def edit
+  #   @callsign = Callsign.find(params.expect(:id))
+  # end
 
   # POST /callsigns or /callsigns.json
   def create
@@ -37,19 +37,19 @@ class CallsignsController < ApplicationController
   end
 
   # PATCH/PUT /callsigns/1 or /callsigns/1.json
-  def update
-    @callsign = Callsign.find(params.expect(:id))
+  # def update
+  #   @callsign = Callsign.find(params.expect(:id))
 
-    respond_to do |format|
-      if @callsign.update(params.expect(callsign: [:status]))
-        format.html { redirect_to @callsign, notice: 'Callsign was successfully updated.', status: :see_other }
-        format.json { render :show, status: :ok, location: @callsign }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @callsign.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @callsign.update(params.expect(callsign: [:status]))
+  #       format.html { redirect_to @callsign, notice: 'Callsign was successfully updated.', status: :see_other }
+  #       format.json { render :show, status: :ok, location: @callsign }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @callsign.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /callsigns/1 or /callsigns/1.json
   def destroy

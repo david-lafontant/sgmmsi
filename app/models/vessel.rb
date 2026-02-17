@@ -25,6 +25,20 @@ class Vessel < ApplicationRecord
     "003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
   end
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[registration_number
+       operation_area
+       mmsi_id
+       user_id
+       created_at
+       updated_at
+       name]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[mmsi callsign user]
+  end
+
   private
 
   def upcase_inputs

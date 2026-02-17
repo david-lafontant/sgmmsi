@@ -59,6 +59,25 @@ class Station < ApplicationRecord
     end
     mmsi
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[
+      registration_number
+      municipality
+      station_type_id
+      email
+      telephone
+      mmsi_id
+      user_id
+      created_at
+      updated_at
+    ]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[mmsi callsign user station_type]
+  end
+
   before_save :upcase_inputs
 
   private

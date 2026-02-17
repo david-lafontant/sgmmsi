@@ -4,10 +4,26 @@ class StationsController < ApplicationController
 
   # GET /stations or /stations.json
   def index
-    @stations = Station.includes(:mmsi, :callsign, :user, :station_type).order(created_at: :desc).all
+    @q = Station.ransack(search_params)
+    @stations = @q.result(distinct: true).includes(:mmsi, :callsign, :user, :station_type).order(created_at: :desc).all
     respond_to do |format|
       format.html { @stations = @stations.page(params[:page]) }
-      format.csv { send_data @stations }
+      # format.csv { send_data @stations }
+    end
+  end
+
+  # GET /stations/search
+  # Alternative endpoint for AJAX searches
+  def search
+    @q = Station.ransack(search_params)
+    @stations = @q.result(distinct: true)
+      .includes(:mmsi, :callsign, :user, :station_type)
+      .limit(50)
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @stations }
+      format.turbo_stream
     end
   end
 
@@ -81,5 +97,25 @@ class StationsController < ApplicationController
   def station_params
     params.expect(station: [:registration_number, :latitude, :longitude, :municipality, :station_type_id, :last_name, :first_name, :email,
                             :telephone, { documents: [] }])
+  end
+
+  def search_params
+    params.fetch(:q, {}).permit(
+      :registration_number_eq,
+      :municipality_cont,
+      :station_type_id_eq,
+      :email_cont,
+      :user_id_eq,
+      :created_at_gteq,
+      :created_at_lteq,
+      :mmsi_mmsi_number_cont,
+      :mmsi_status_eq,
+      :station_type_id,
+      :callsign_call_sign_num_cont,
+      :s, # Sort parameter
+      municipality_in: [],
+      station_type_category_in: [],
+      created_at_in: []
+    )
   end
 end
