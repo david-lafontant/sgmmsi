@@ -1,8 +1,20 @@
 class StationType < ApplicationRecord
   has_many :stations
 
-  string_regex = Regexp.new(/\A[A-Za-z\s]{3,50}\z/, Regexp::IGNORECASE)
-  validates :category, presence: true, format: { with: string_regex, message: 'invalid format' }
+  VALID_STATUTS = [
+    'COTIERE',
+    'PORTUAIRES',
+    'PILOTAGE',
+    'REPETEUR AIS',
+    'BASE AIS'
+  ].freeze
+
+  string_regex = Regexp.new(/\A[[:alpha:]][[:alnum:]\- ]*\z/u, Regexp::IGNORECASE)
+  validates :category, presence: true, length: { in: 3..40 }, format: { with: string_regex, message: 'invalid format' }, inclusion: {
+    in: VALID_STATUTS,
+    message: 'invalid format'
+  }
+
   before_save :upcase_inputs
   def self.ransackable_attributes(_auth_object = nil)
     %w[category
