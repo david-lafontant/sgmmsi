@@ -10,6 +10,10 @@ class Callsign < ApplicationRecord
 
   validate :user_id_exists
   validate :mmsi_id_exists
+  validates :call_sign_num, presence: true, format: {
+    with: /\Acall003290\d{5}\z/,
+    message: 'invalid format'
+  }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[
