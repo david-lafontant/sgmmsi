@@ -21,6 +21,9 @@
       </div>
     </div>
     <div class="my-3">
+      Found <%= @vessels.total_count %> vessels
+    </div>
+    <div class="my-b">
       <%= paginate @vessels, theme: 'bootstrap-5',
                    pagination_class: "pagination-sm flex-wrap justify-content-center",
                    nav_class: "d-inline-block" %>
