@@ -5,7 +5,11 @@ class Mmsi < ApplicationRecord
   has_one :station, dependent: :destroy
   has_one :callsign, dependent: :destroy
   belongs_to :user
-  validates :mmsi_number, presence: true, uniqueness: true
+  validates :mmsi_number, presence: true, uniqueness: true,
+                          format: {
+                            with: /\A00329[0-5]\d{5}\z/,
+                            message: 'nvalid format'
+                          }
 
   validates :category, inclusion: { in: %w[station vessel], message: 'invalid data' }
   after_initialize :set_default_status, if: :new_record?
