@@ -28,6 +28,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html { @vessels = @vessels.page(params[:page]) }
       format.csv { @vessels }
+      format.xlsx { @vessels }
     end
   end
 end
