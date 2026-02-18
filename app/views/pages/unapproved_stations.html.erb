@@ -3,10 +3,26 @@
 <div class="row">
   <div class="col d-flex flex-column mx-auto py-3">
     <h1>Stations non approuv&eacute;es</h1>
-    <div class="mb-3">
-      <%= link_to "Telecharger la liste", unapproved_stations_path(format: :csv) , class: "d-block button-37", download: "stations_non_approuvees_#{Time.current.strftime("%m-%d-%Y--%H-%M-%S")}.csv" %>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            T&eacute;l&eacute;charger la liste
+          </button>
+        </h4>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="mb-1">
+              <%= link_to "version csv", unapproved_stations_path(format: :csv) , class: "d-block button-37", download: "stations_non_approuvees_#{Time.current.strftime("%m-%d-%Y--%H-%M-%S")}.csv" %>
+            </div>
+            <div class="mb-1">
+              <%= link_to "version excel", unapproved_stations_path(format: :xlsx), class: "d-block button-37" , download: "stations_non_approuvees_#{Time.current.strftime("%m-%d-%Y--%H-%M-%S")}.xlsx"%>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
+    <div class="my-3">
       <%= paginate @stations, theme: 'bootstrap-5',
                    pagination_class: "pagination-sm flex-wrap justify-content-center",
                    nav_class: "d-inline-block" %>
