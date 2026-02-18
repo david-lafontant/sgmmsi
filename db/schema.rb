@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_15_164208) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_17_011651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,7 +56,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_15_164208) do
     t.string "call_sign_num", null: false
     t.bigint "mmsi_id", null: false
     t.bigint "user_id", null: false
-    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mmsi_id"], name: "index_callsigns_on_mmsi_id"

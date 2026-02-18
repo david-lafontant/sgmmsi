@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Unapproved vessels') do |sheet|
+  sheet.add_row %w[nom immatriculation zone mmsi callsign date]
+  @vessels.each do |vessel|
+    sheet.add_row [
+      vessel.name,
+      vessel.registration_number,
+      vessel.operation_area,
+      vessel.mmsi.mmsi_number.to_s,
+      vessel.callsign.call_sign_num,
+      vessel.created_at.strftime('%d/%B/%Y')
+    ]
+  end
+end

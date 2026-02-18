@@ -10,7 +10,10 @@ class Callsign < ApplicationRecord
 
   validate :user_id_exists
   validate :mmsi_id_exists
-  after_initialize :set_default_status, if: :new_record?
+  validates :call_sign_num, presence: true, format: {
+    with: /\Acall003290\d{5}\z/,
+    message: 'invalid format'
+  }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[
@@ -24,11 +27,5 @@ class Callsign < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     %w[mmsi user]
-  end
-
-  private
-
-  def set_default_status
-    self[:status] ||= true
   end
 end

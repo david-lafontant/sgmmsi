@@ -45,7 +45,7 @@ class StationsController < ApplicationController
     station_category = StationType.find(@station.station_type_id).category
     mmsi = @station.generate_station_mmsi(station_category)
     ref1 = Mmsi.create(mmsi_number: mmsi, user_id: current_user.id, category: 'station')
-    call1 = Callsign.create(mmsi_id: ref1.id, user_id: current_user.id, call_sign_num: @station.generate_callsign, status: false)
+    call1 = Callsign.create(mmsi_id: ref1.id, user_id: current_user.id, call_sign_num: @station.generate_callsign)
     @station.mmsi_id = ref1.id
 
     respond_to do |format|
