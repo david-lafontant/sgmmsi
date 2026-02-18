@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Unapproved stations') do |sheet|
+  sheet.add_row %w[immatriculation
+                   type
+                   mmsi
+                   callsign
+                   latitude
+                   longitude
+                   commune]
+  @stations.each do |station|
+    sheet.add_row [station.registration_number, station.station_type.category, station.mmsi.mmsi_number.to_s, station.callsign.call_sign_num, station.latitude,
+                   (station.longitude * -1), station.municipality]
+  end
+end
