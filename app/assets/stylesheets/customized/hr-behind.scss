@@ -1,0 +1,15 @@
+.line-behind-text h2 {
+  display: grid; /* Use grid for layout */
+  grid-template-columns: 1fr auto 1fr; /* 1fr for each line, auto for text width */
+  align-items: center; /* Vertically center the items */
+  gap: 1rem; /* Space between lines and text */
+  text-align: center;
+}
+
+.line-behind-text h2::before,
+.line-behind-text h2::after {
+  content: ""; /* Required for pseudo-elements */
+  height: 1px; /* Thickness of the line */
+  background-color: #000; /* Color of the line */
+  display: block; /* Ensure the line renders as a block */
+}
