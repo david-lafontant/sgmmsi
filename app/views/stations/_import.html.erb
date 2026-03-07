@@ -1,0 +1,6 @@
+<%= form_with url: import_stations_path, local: true, multipart: true do |form| %>
+  <div class="input-group">
+    <%= form.file_field :file , class: "form-control form-control-lg " %>
+    <%= form.submit "Import" ,  class: "button-29" %>
+  </div>
+<% end %>

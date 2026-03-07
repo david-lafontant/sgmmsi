@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   before_action :check_user_banned_status
+  before_action :set_current_user
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user.nil?
@@ -18,6 +19,10 @@ class ApplicationController < ActionController::Base
         format.js { render nothing: true, status: :not_found }
       end
     end
+  end
+
+  def set_current_user
+    Current.user = current_user
   end
 
   protected

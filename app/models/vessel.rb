@@ -1,4 +1,6 @@
 class Vessel < ApplicationRecord
+  attribute :user
+
   include EmailConcern
   include CallsignConcern
   include MmsiConcern
@@ -23,6 +25,28 @@ class Vessel < ApplicationRecord
   before_save :upcase_inputs
   def generate_vessel_mmsi
     "003290#{SecureRandom.random_number(10**5).to_s.rjust(5, '0')}"
+  end
+
+  def self.import(file) # rubocop:disable Metrics/AbcSize
+    spreadsheet = Roo::Excelx.new(file.tempfile.path)
+    headers = spreadsheet.row(1) # Assuming the first row contains headers
+    headers.map!(&:strip)
+    spreadsheet.each_with_index do |row, idx|
+      next if idx.zero? # Skip header row
+
+      vessel_data = [headers, row].transpose.to_h
+      vessel = find_by(registration_number: vessel_data['registration_number']) || new
+      vessel.attributes = vessel_data
+      vessel.user_id = Current.user.id
+      mmsi = vessel.generate_vessel_mmsi
+      ref1 = Mmsi.create(mmsi_number: mmsi, user_id: Current.user.id, category: 'vessel')
+      call1 = Callsign.create(mmsi_id: ref1.id, user_id: Current.user.id, call_sign_num: vessel.generate_callsign)
+      vessel.mmsi_id = ref1.id
+      next if vessel.save
+
+      ref1.destroy
+      call1.destroy
+    end
   end
 
   def self.ransackable_attributes(_auth_object = nil)

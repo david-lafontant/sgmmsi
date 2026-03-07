@@ -5,9 +5,17 @@ Rails.application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
-  resources :stations
+  resources :stations do
+    collection do
+      post :import
+    end
+  end
   resources :station_types
-  resources :vessels
+  resources :vessels do
+    collection do
+      post :import
+    end
+  end
   resources :mmsis, only: [:edit, :update]
   get '/dashboard', to: "pages#dashboard", as: :dashboard
   # get 'callsigns', to: "callsigns#index", as: :callsigns

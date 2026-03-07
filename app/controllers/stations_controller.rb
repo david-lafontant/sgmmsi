@@ -27,6 +27,16 @@ class StationsController < ApplicationController
     end
   end
 
+  def import
+    Station.import(params[:file])
+    respond_to do |format|
+      format.html { render :index, notice: 'Data imported successfully!' }
+      format.json { render json: @stations }
+      format.turbo_stream
+    end
+    # redirect_to vessels_url, notice: 'Data imported successfully!'
+  end
+
   # GET /stations/1 or /stations/1.json
   def show; end
 
