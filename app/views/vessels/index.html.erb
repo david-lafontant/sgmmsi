@@ -3,8 +3,27 @@
 <div class="row">
   <div class="col d-flex flex-column mx-auto py-3">
     <h1>Vessels</h1>
-    <div class="mb-3">
-      <%= link_to "Ajouter navire", new_vessel_path, class: "btn btn-primary" %>
+    <div class="accordion my-3" id="accordionAddVessels">
+      <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAddVessels" aria-expanded="false" aria-controls="collapseAddVessels">
+            Ajouter navires
+          </button>
+        </h4>
+        <div id="collapseAddVessels" class="accordion-collapse collapse" data-bs-parent="#accordionAddVessels">
+          <div class="accordion-body">
+            <div class="mb-3">
+              <%= link_to "Ajouter un navire", new_vessel_path, class: "btn btn-primary" %>
+            </div>
+            <div class="line-behind-text">
+              <h2>
+                or
+              </h2>
+            </div>
+            <%= render "import" %>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">
