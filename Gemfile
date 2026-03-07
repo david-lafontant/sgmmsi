@@ -36,7 +36,7 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
-  gem 'brakeman', '~> 8.0', '>= 8.0.2', require: false
+  gem 'brakeman', '~> 8.0', '>= 8.0.4', require: false
   gem 'debug', '~> 1.11', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'factory_bot_rails', '~> 6.5', '>= 6.5.1'
   gem 'faker', '~> 3.6'
