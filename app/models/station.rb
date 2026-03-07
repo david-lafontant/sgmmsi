@@ -78,6 +78,30 @@ class Station < ApplicationRecord
     %w[mmsi callsign user station_type]
   end
 
+  def self.import(file) # rubocop:disable Metrics/AbcSize
+    spreadsheet = Roo::Excelx.new(file.tempfile.path)
+    # Assuming the first row contains headers
+    headers = spreadsheet.row(1)
+    headers.map!(&:strip)
+    spreadsheet.each_with_index do |row, idx|
+      next if idx.zero? # Skip header row
+
+      station_data = [headers, row].transpose.to_h
+      @station = find_by(registration_number: station_data['registration_number']) || new
+      @station.attributes = station_data
+      @station.user_id = Current.user.id
+      station_category = StationType.find(@station.station_type_id).category
+      mmsi = @station.generate_station_mmsi(station_category)
+      @ref1 = Mmsi.create(mmsi_number: mmsi, user_id: Current.user.id, category: 'station')
+      @call1 = Callsign.create(mmsi_id: @ref1.id, user_id: Current.user.id, call_sign_num: @station.generate_callsign)
+      @station.mmsi_id = @ref1.id
+      next if @station.save
+
+      @ref1.destroy
+      @call1.destroy
+    end
+  end
+
   before_save :upcase_inputs
 
   private
