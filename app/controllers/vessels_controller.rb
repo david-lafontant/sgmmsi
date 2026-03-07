@@ -27,6 +27,16 @@ class VesselsController < ApplicationController
     end
   end
 
+  def import
+    Vessel.import(params[:file])
+    respond_to do |format|
+      format.html { render :index, notice: 'Data imported successfully!' }
+      format.json { render json: @vessels }
+      format.turbo_stream
+    end
+    # redirect_to vessels_url, notice: 'Data imported successfully!'
+  end
+
   # GET /vessels/1 or /vessels/1.json
   def show; end
 
