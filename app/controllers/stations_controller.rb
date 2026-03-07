@@ -37,9 +37,6 @@ class StationsController < ApplicationController
     # redirect_to vessels_url, notice: 'Data imported successfully!'
   end
 
-
-
-
   # GET /stations/1 or /stations/1.json
   def show; end
 
